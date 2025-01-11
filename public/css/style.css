@@ -197,6 +197,11 @@ header{
 
 }
 
+.post-item {
+
+    border-bottom: 1px solid #727272;
+}
+
 /* ユーザーアイコンの画像スタイル */
 .user-icon img {
     width: 50px;

@@ -33,7 +33,7 @@
     <div id="container">
       {{ $slot }}
     </div>
-    <div id="side-bar">
+    <!-- <div id="side-bar">
       <div id="confirm">
         <p>〇〇さんの</p>
         <div>
@@ -48,7 +48,24 @@
         <p class="btn"><a href="">フォロワーリスト</a></p>
       </div>
       <p class="btn"><a href="">ユーザー検索</a></p>
+    </div> -->
+    <div class="side-bar">
+        <div class="confirm">
+          <p class="user-name">〇〇さんの</p>
+        <div class="follow-info">
+          <p>フォロー数</p>
+          <p class="count">〇〇名</p>
+        </div>
+        <p class="btn"><a href="#" class="btn-link">フォローリスト</a></p>
+        <div class="follow-info">
+          <p>フォロワー数</p>
+          <p class="count">〇〇名</p>
+        </div>
+        <p class="btn"><a href="#" class="btn-link">フォロワーリスト</a></p>
+      </div>
+      <p class="btn"><a href="#" class="btn-link">ユーザー検索</a></p>
     </div>
+
   </div>
   <footer>
   </footer>

@@ -32,4 +32,23 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    // フォロウ機能
+    //フォローを行った人のリレーション
+    Public function follows(){return $this->belongsToMany(
+        'App\Models\User', // ① User モデルの場所
+        'follows',         // ② 中間テーブル名（小文字にするのが一般的）
+        'user_id',         // ③ 中間テーブルの自分の ID が入るカラム
+        'user_id' // ④ 中間テーブルの相手モデルに関係しているカラム
+        );
+    }
+
+    //フォローをされた人用のリレーション
+    Public function followers(){return $this->belongsToMany(
+        'App\Models\User', // ① User モデルの場所
+        'follows',         // ② 中間テーブル名（小文字にするのが一般的）
+        'user_id',         // ③ 中間テーブルの自分の ID が入るカラム
+        'user_id' // ④ 中間テーブルの相手モデルに関係しているカラム
+        );
+    }
 }

@@ -49,4 +49,6 @@
             </div>
         </form>
     </div>
+
+
 </x-login-layout>

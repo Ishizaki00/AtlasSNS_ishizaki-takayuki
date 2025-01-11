@@ -16,6 +16,12 @@ class PostsController extends Controller
         return view('posts.index', compact('posts'));
     }
 
+    public function user()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
+
+
     // 投稿保存処理
     public function store(Request $request)
     {

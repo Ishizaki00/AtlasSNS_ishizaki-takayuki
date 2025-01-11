@@ -9,6 +9,6 @@ class Post extends Model
 {
     use HasFactory;
     // マスアサインメントを許可するカラムを定義
-    protected $fillable = ['user_id','post'];
+    protected $fillable = ['user_id','post','username'];
 
 }
