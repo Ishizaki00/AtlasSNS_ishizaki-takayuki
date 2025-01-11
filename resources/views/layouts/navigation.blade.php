@@ -1,13 +1,29 @@
-        <div id="head">
-            <h1><a><img src="images/atlas.png"></a></h1>
-            <div id="">
-                <div id="">
-                    <p>〇〇さん</p>
-                </div>
-                <ul>
-                    <li><a href="">ホーム</a></li>
-                    <li><a href="">プロフィール</a></li>
-                    <li><a href="">ログアウト</a></li>
-                </ul>
-            </div>
+<div id="head">
+    <!-- トップページへのリンク -->
+    <h1>
+        <a href="{{ route('top') }}">
+            <img src="images/atlas.png" alt="Atlas" class="header-logo">
+        </a>
+    </h1>
+    <div class="side_user">
+        <div id="accordion" class="accordion-container">
+            <button class="accordion-title" data-accordion-title>
+                {{ Auth::user()->username }} さん
+                <img class="arrow-icon" src="{{ asset('/images/arrow.svg') }}" alt="Arrow">
+            </button>
+            <ul class="menu" style="display: none;">
+                <li><a class="index" href="{{ route('top') }}">ホーム</a></li>
+                <li><a class="profile" href="{{ route('profile.edit') }}">プロフィール</a></li>
+                <li>
+                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer; font: inherit;">
+                        ログアウト
+                        </button>
+                    </form>
+                </li>
+
+            </ul>
         </div>
+    </div>
+</div>

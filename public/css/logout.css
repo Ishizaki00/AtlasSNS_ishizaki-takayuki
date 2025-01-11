@@ -5,6 +5,129 @@ html{
 }
 
 body{
-    height: 100%;
-    background: #186AC9;
+    display: flex;
+    flex-direction: column;/* 縦方向のレイアウト */
+    align-items: center;/* 水平方向中央揃え */
+    height: 100%;/* background: #186AC9; */
+    background-image: linear-gradient(
+            180deg,
+            rgba(1, 129, 253, 1),
+            rgba(220, 220, 191, 1) 66%,
+            rgba(255, 232, 5, 1));
+            background-repeat: no-repeat;
+                /* 背景画像の繰り返しを防止 */
+                background-size: cover;
+                /* 背景を全体に広げる */
+}
+
+/* header {
+    display: flex;
+    color: #fff;
+    flex-direction: column;
+    /* 縦方向に要素を並べる */
+    align-items: center;
+    /* 水平方向で中央揃え */
+    justify-content: center;
+    /* 垂直方向で中央揃え */
+    padding-top: 50px;
+    /* 上からの高さを調整 */
+    text-align: center;
+    /* テキストを中央揃え */
+} */
+
+.container {
+        padding-top: 100px;
+}
+/* ヘッダー全体 */
+.header-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 水平方向中央揃え */
+    justify-content: center;
+    /* 垂直方向中央揃え */
+    padding-top: 100px;
+    /* 上からの高さ調整 */
+    text-align: center;
+    /* テキスト中央揃え */
+}
+
+/* テキストの色 */
+.header-main .header-description {
+    color: #fff;
+    /* テキスト色を白に設定 */
+}
+
+/* h1 内の画像スタイル */
+header h1 img {
+    max-width: 50%;
+}
+/* ヘッダー部分 */
+header {
+    margin-bottom: 30px;
+    /* Social Network Service とログインフォームの間隔 */
+    text-align: center;
+}
+/* サブテキスト (Social Network Service) のスタイル */
+header p {
+    font-size: 2em;
+    /* テキストサイズ調整 */
+    color: #333;
+    /* テキスト色 */
+    margin: 0;
+    /* 不要な余白を排除 */
+}
+
+
+/* ログインフォームを囲むボックスのスタイル */
+.login-box {
+    color: #fff;
+    width: 250px;
+    /* ボックスの幅 */
+    padding: 20px;
+    /* 内側の余白 */
+    background: rgba(128, 128, 128, 0.2);
+    /* 半透明の灰色背景 */
+    border-radius: 8px;
+    /* 角丸にする */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    /* 影を付ける */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /* テキストを中央揃え */
+}
+
+/* ログインボタンのスタイル */
+.login-box input[type="submit"] {
+    width: 40%;
+    /* 幅をボックスに合わせる */
+    padding: 10px;
+    /* 内側の余白 */
+    background-color: red;
+    /* 背景を赤にする */
+    color: #fff;
+    /* 文字を白にする */
+    border: none;
+    /* 枠線を消す */
+    border-radius: 5px;
+    /* 角丸にする */
+    font-size: 1rem;
+    /* フォントサイズ */
+    cursor: pointer;
+    /* カーソルを変更 */
+}
+
+/* リンクのスタイル */
+.login-box a {
+    color: #fff;
+    /* 白文字 */
+    text-decoration: none;
+    /* 下線を消す */
+    font-size: 0.9rem;
+    /* フォントサイズ */
+    display: inline-block;
+    /* ボックス内に収める */
+    margin-top: 15px;
+    /* 上に余白 */
 }

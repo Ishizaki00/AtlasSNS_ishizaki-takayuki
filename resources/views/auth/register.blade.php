@@ -1,6 +1,6 @@
 <x-logout-layout>
-    <!-- 適切なURLを入力してください -->
-{!! Form::open(['url' => '〇〇']) !!}
+    <!-- 適切なURLを入力してください   追記-->
+{!! Form::open(['url' => 'register']) !!}
 
 <h2>新規ユーザー登録</h2>
 
@@ -22,5 +22,14 @@
 
 {!! Form::close() !!}
 
+@if($errors->any())
+        <div class="alert alert-danger">
+          <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+    @endif
 
 </x-logout-layout>

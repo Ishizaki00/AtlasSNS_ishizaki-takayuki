@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+    // マスアサインメントを許可するカラムを定義
+    protected $fillable = ['user_id','post'];
+
 }

@@ -7356,6 +7356,95 @@ button.close {
 .popover-content {
   padding: 9px 14px
 }
+/* 追記 アコーディオンメニュー*/
+.arrow-icon {
+    transition: transform 0.3s ease; /* アニメーションを追加 */
+}
+
+.arrow-icon.rotate {
+    transform: rotate(180deg); /* 上下反転 */
+}
+/* アコーディオンメニュー全体のスタイル */
+.accordion-container {
+  position: absolute;
+  /* ページ内の任意の位置に配置可能 */
+  top: 20px;
+  right: 20px;
+  /* 上端に固定 */
+  lighting-color: 0;
+  /* 左端に固定 */
+  width: 200px;
+  /* 必要に応じて幅を調整 */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  /* 軽い影 */
+  padding: 10px;
+  z-index: 1000;
+  /* 前面に表示 */
+}
+
+/* アコーディオンタイトルのスタイル */
+.accordion-title {
+  display: flex;
+  /* アイコンとテキストを横並び */
+  justify-content: space-between;
+  /* アイコンを右端に配置 */
+  align-items: center;
+  /* アイコンを垂直中央に */
+  background-color: transparent;
+  border: none;
+  /* ボーダーを消去 */
+  cursor: pointer;
+  /* クリック可能に見せる */
+  font-size: 16px;
+  /* 文字サイズ */
+  font-weight: bold;
+  /* 太字 */
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+}
+
+/* 矢印アイコンのサイズを調整 */
+.arrow-icon {
+  width: 14px;
+  /* 幅を小さく調整 */
+  height: 14px;
+  /* 高さを小さく調整 */
+  transition: transform 0.3s ease;
+  /* 回転アニメーション */
+}
+
+/* メニューリストのスタイル */
+.menu {
+  list-style: none;
+  /* デフォルトのリストスタイルを無効化 */
+  background-color: #fff;
+
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  padding: 8px 10px;
+  border-top: 1px solid #ddd;
+  /* 各項目の区切り線 */
+}
+
+.menu li a {
+  text-decoration: none;
+  /* 下線を消去 */
+  color: #aaa;
+  /* テキスト色 */
+  display: block;
+  width: 100%;
+}
+
+/* ホバー時のエフェクト */
+.menu li a:hover {
+  background-color: #f0f0f0;
+  /* 背景色を変更 */
+}
+/* 追記 アコーディオンメニュー*/
 
 .popover>.arrow,
 .popover>.arrow:after {

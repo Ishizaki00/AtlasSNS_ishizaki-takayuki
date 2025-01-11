@@ -8,15 +8,290 @@ header{
     background:#186AC9;
 }
 
+.header-logo {
+    width: 80px;
+    /* ロゴの幅を指定 */
+    height: auto;
+    /* 自動で高さを調整 */
+    object-fit: contain;
+    /* ロゴの縦横比を保持して表示 */
+}
 /* main content */
 #row{
     display: flex;
-    flex-flow: row wrap;
+    flex-wrap: nowrap;
+    /* flex-flow: row wrap; */
+    /* justify-content: flex-end; */
 }
 #container{
     flex: 0 0 80%;
 }
 #side-bar{
-    flex: 0 0 19%;
+    flex: 0 0 20%;
     border-left: 1px solid #727272;
+    /* margin: 0 0 0 auto; */
+}
+
+/* 追記 */
+.menu {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.accordion-container .menu.active {
+    display: block;
+}
+
+/* 追記 プロフィール編集画面 */
+/* User Icon */
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* 丸型にする */
+    margin-right: 10px;
+    /* テキストとの間隔 */
+    vertical-align: middle;
+    /* テキストと揃える */
+}
+
+.profile-edit-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-edit-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    /* 横並びに配置 */
+    align-items: center;
+    /* 垂直方向で中央揃え */
+    margin-bottom: 10px;
+    /* 各フォーム要素の間に余白を追加 */
+}
+
+.form-group label {
+    width: 120px;
+    /* ラベルの固定幅 */
+    font-weight: bold;
+    /* ラベルの強調 */
+    margin-right: 50px;
+    /* ラベルとボックスの間のスペース */
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 300px;
+    /* 入力ボックスと他のフォーム要素の幅を統一 */
+    height: 40px;
+    /* 高さを統一 */
+    padding: 8px;
+    /* 内側の余白 */
+    font-size: 16px;
+    /* フォントサイズ */
+    background-color: #D3D3D3;
+    box-sizing: border-box;
+    /* パディングを含めたサイズ計算 */
+    border: 1px solid #ccc;
+    /* ボーダーのスタイル */
+    border-radius: 4px;
+    /* 角を丸く */
+    transition: border-color 0.3s ease;
+    /* フォーカス時のアニメーション */
+}
+
+/* テキストエリア専用のスタイル */
+.form-group textarea {
+    height: auto;
+    /* 高さを自動調整（ユーザーが拡大可能） */
+    resize: vertical;
+    /* 垂直方向のみリサイズ可能 */
+}
+
+/* フォーカス時のスタイル */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #007BFF;
+    /* フォーカス時のボーダーカラー */
+    outline: none;
+    /* フォーカスリングを非表示 */
+}
+
+.form-control {
+    width: 120px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn {
+    width: 180px;
+    padding: 10px;
+    margin: 0 80px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #FF0000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border-radius: 6px;
+    /* 角を丸く */
+}
+
+.btn:hover {
+    background-color: #FF0000;
+}
+
+/* icon imageのボックス */
+#icon_image {
+    width: 300px;
+    /* ファイル選択ボックスの幅 */
+    height: 100px;
+    /* ファイル選択ボックスの高さ */
+    padding: 5px;
+    /* 内側の余白 */
+    font-size: 14px;
+    /* 文字サイズ */
+    border: 1px solid #ccc;
+    /* 枠線 */
+    border-radius: 4px;
+    /* 角を丸くする */
+    background-color: #D3D3D3;
+    背景色
+}
+
+/* 追記 プロフィール編集画面 */
+
+
+
+/* top画面 */
+.post {
+    background-color: #fff;
+    border-bottom: 8px solid #ddd;
+    /* 下部に横線を追加 */
+}
+
+.post-container {
+    display: flex;
+    /* 子要素を横並びに配置 */
+    margin: 20px auto;
+    /* 上下に20pxのマージンを設定し、中央寄せ */
+    background-color: #fff;
+    max-width: 600px;
+    /* 最大幅を600pxに制限 */
+    padding: 10px;
+    /* 内側の余白を10pxに設定 */
+
+
+}
+
+/* ユーザーアイコンの画像スタイル */
+.user-icon img {
+    width: 50px;
+    /* 幅を50pxに設定 */
+    height: 50px;
+    /* 高さを50pxに設定 */
+    border-radius: 50%;
+    /* 丸型にする */
+    object-fit: cover;
+    /* 画像をコンテナ内に収めつつ切り抜き */
+}
+
+/* 投稿フォーム全体のスタイル */
+.post-form {
+    display: flex;
+    /* 子要素を縦並びに配置 */
+    flex-direction: column;
+    /* フォーム内の要素を列方向に配置 */
+    flex-grow: 1;
+    /* 残りのスペースを占める */
+    gap: 10px;
+    /* 子要素間の間隔を10pxに設定 */
+}
+
+/* 投稿フォームのテキストエリアスタイル */
+.post-form textarea {
+    width: 100%;
+    /* 幅を親要素に合わせる */
+    height: 80px;
+    /* 高さを80pxに設定 */
+    border: none;
+    padding: 10px;
+    /* 内側の余白を10pxに設定 */
+    font-size: 14px;
+    /* フォントサイズを14pxに設定 */
+}
+
+/* 投稿ボタン全体のスタイル */
+.post-button {
+    background: none;
+    /* 背景をなしに設定 */
+    border: none;
+    /* ボーダーをなしに設定 */
+    cursor: pointer;
+    /* ホバー時にポインター表示 */
+}
+
+/* 投稿ボタン内の画像スタイル */
+.post-button img {
+    width: 40px;
+    /* 幅を40pxに設定 */
+    height: 40px;
+    /* 高さを40pxに設定 */
+}
+
+/* 投稿一覧 */
+.post-list {
+    margin-top: 20px;
+    /* 投稿フォームとの間隔 */
+    margin-left: 120px;
+    width: 80%;
+    /* 投稿一覧の幅を指定 */
+    max-width: 600px;
+    /* 最大幅を設定 */
+
+}
+
+/* 投稿アイテム */
+.post-item {
+    display: flex;
+    align-items: center;
+    /* アイコンとテキストを中央揃え */
+    padding: 10px;
+    /* 内側余白 */
+    margin-bottom: 10px;
+    /* 下に余白 */
+
+}
+
+/* 投稿者アイコン */
+.user-icon img {
+    width: 40px;
+    /* アイコンの幅 */
+    height: 40px;
+    /* アイコンの高さ */
+    border-radius: 50%;
+    /* 丸くする */
+    margin-right: 10px;
+    /* アイコンとテキストの間隔 */
+}
+
+/* 投稿内容 */
+.post-content {
+    flex: 1;
+    /* 残りのスペースを占有 */
+    word-wrap: break-word;
+    /* 長い単語を折り返し */
 }
