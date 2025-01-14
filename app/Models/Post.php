@@ -9,6 +9,11 @@ class Post extends Model
 {
     use HasFactory;
     // マスアサインメントを許可するカラムを定義
-    protected $fillable = ['user_id','post','username'];
+    protected $fillable = ['user_id','post'];
 
+    // 投稿に紐付いたユーザー情報を取得するリレーション
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

@@ -32,7 +32,7 @@
                 <!-- 投稿内容と投稿日時 -->
                 <div class="post-content">
                     <!-- 投稿者のアカウント名 -->
-                <h4 class="username">{{ $post->username }}</h4> <!-- 投稿者名 -->
+                <h4 class="username">{{ $post->user->username }}</h4> <!-- 投稿者名 -->
                     <p>{{ $post->post }}</p> <!-- 投稿内容 -->
                     <small>{{ $post->created_at->format('Y-m-d H:i') }}</small> <!-- 投稿日時 -->
                 </div>
