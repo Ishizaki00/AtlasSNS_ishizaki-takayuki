@@ -29,6 +29,8 @@ Route::get('/search', [UsersController::class, 'search'])->name('search');
 
 
 // フォロー関連
+Route::post('/users/{user}/follow', [FollowsController::class, 'follow'])->name('users.follow');
+Route::post('/users/{user}/unfollow', [FollowsController::class, 'unfollow'])->name('users.unfollow');
 // Route::get('/follows', [FollowsController::class, 'list'])->name('follows.list');
 // Route::get('/followers', [FollowsController::class, 'listFollowers'])->name('followers.list');
 

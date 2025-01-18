@@ -1,5 +1,5 @@
 <?php
-
+//User.php（Userモデル）は他のモデルとのリレーションを定義する。
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -35,20 +35,29 @@ class User extends Authenticatable
 
     // フォロウ機能
     //フォローを行った人のリレーション
-    Public function follows(){return $this->belongsToMany(
-        'App\Models\User', // ① User モデルの場所
-        'follows',         // ② 中間テーブル名（小文字にするのが一般的）
-        'user_id',         // ③ 中間テーブルの自分の ID が入るカラム
-        'user_id' // ④ 中間テーブルの相手モデルに関係しているカラム
+    Public function followings()
+    {
+        return $this->belongsToMany(
+            User::class, // ① User モデルの場所
+            'follows',         // ② 中間テーブル名（小文字にするのが一般的）
+            'following_id',         // ③ 中間テーブルの自分の ID が入るカラム
+            'followed_id' // ④ 中間テーブルの相手モデルに関係しているカラム
         );
     }
 
     //フォローをされた人用のリレーション
-    Public function followers(){return $this->belongsToMany(
-        'App\Models\User', // ① User モデルの場所
-        'follows',         // ② 中間テーブル名（小文字にするのが一般的）
-        'user_id',         // ③ 中間テーブルの自分の ID が入るカラム
-        'user_id' // ④ 中間テーブルの相手モデルに関係しているカラム
+    Public function followers()
+    {
+        return $this->belongsToMany(
+            User::class, // ① User モデルの場所
+            'follows',         // ② 中間テーブル名（小文字にするのが一般的）
+            'followed_id',         // ③ 中間テーブルの自分の ID が入るカラム
+            'following_id' // ④ 中間テーブルの相手モデルに関係しているカラム
         );
+    }
+
+    public function isFollowing(User $user)
+    {
+        return $this->followings()->where('followed_id', $user->id)->exists();
     }
 }

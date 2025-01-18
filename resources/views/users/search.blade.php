@@ -29,11 +29,21 @@
                     {{ $user->username }}
 
                     <!-- フォロー登録解除ボタン -->
-                    <button type="submit">フォローする</button>
-                </li>
-                @endif
-                <!-- ＠endforeachはループの終わり -->
-            @endforeach
+                    @if (Auth::user()->isFollowing($user))
+                <form action="{{ route('users.unfollow', $user) }}" method="POST">
+                    @csrf
+                    @method('DELETE') {{-- DELETEメソッドを使用 --}}
+                    <button type="submit">フォロー解除</button>
+                </form>
+            @else
+                <form action="{{ route('users.follow', $user) }}" method="POST">
+                    @csrf
+                    <button type="submit">フォロー</button>
+                </form>
+            @endif
+        </li>
+    @endif
+@endforeach
         </ul>
     </div>
 </div>
