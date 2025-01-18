@@ -1,6 +1,8 @@
 <x-login-layout>
+  <div class="container">
+    Folower List
 
 
-  <h2>機能を実装していきましょう。</h2>
+  </div>
 
 </x-login-layout>

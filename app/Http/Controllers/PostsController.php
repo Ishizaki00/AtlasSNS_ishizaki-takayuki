@@ -12,6 +12,7 @@ class PostsController extends Controller
     // 投稿一覧表示
     public function index()
     {
+        // 「desc」は降順に並べる、「asc」 だと昇順
         $posts = Post::orderBy('created_at', 'desc')->get();
         return view('posts.index', compact('posts'));
     }
@@ -21,6 +22,12 @@ class PostsController extends Controller
     return $this->belongsTo(User::class, 'user_id');
 }
 
+    // フォローリスト
+    public function followList()
+    {
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('follows.followList', compact('posts'));
+    }
 
     // 投稿保存処理
     public function store(Request $request)
