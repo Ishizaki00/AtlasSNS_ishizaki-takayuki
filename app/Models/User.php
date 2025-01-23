@@ -60,4 +60,10 @@ class User extends Authenticatable
     {
         return $this->followings()->where('followed_id', $user->id)->exists();
     }
+
+    // ユーザーと投稿の間にリレーションを定義、hasManyは１対多のリレーションを定義するメソット、hasMany(Post::class) を記述することで、「ユーザーは複数の投稿を持つ」という関係をEloquentに伝えています。
+    public function posts()
+{
+    return $this->hasMany(Post::class);
+}
 }
