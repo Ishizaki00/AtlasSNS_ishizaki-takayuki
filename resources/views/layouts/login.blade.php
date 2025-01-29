@@ -69,6 +69,9 @@
   </div>
   <footer>
   </footer>
+  <!-- jqueryを読み込み、jqueryを使用するには必須↓ -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="{{ asset('js/modal.js') }}"></script>
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="{{ asset('/js/script.js') }}"></script>
   <script src="JavaScriptファイルのURL"></script>

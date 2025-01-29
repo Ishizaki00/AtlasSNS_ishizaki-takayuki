@@ -43,3 +43,6 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 // 投稿
 Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
 Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
+
+// 投稿の編集、削除
+Route::resource('posts', PostsController::class);

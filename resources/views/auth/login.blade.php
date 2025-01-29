@@ -1,6 +1,7 @@
 <x-logout-layout>
   <div class="login-box">
   <!-- 適切なURLを入力してください  追記 -->
+   <!-- loginというルート名 -->
   {!! Form::open(['url' => ('login')]) !!}
 
   <p>AtlasSNSへようこそ</p>

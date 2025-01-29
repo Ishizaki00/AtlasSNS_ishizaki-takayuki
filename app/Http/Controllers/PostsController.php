@@ -48,4 +48,23 @@ class PostsController extends Controller
         // 投稿一覧ページへリダイレクト
         return redirect()->route('posts.index');
     }
+
+    // 投稿の編集
+    public function edit(Post $post)
+    {
+        return view('post.edit', compact('post'));
+    }
+    public function update(Request $request, Post $post)
+{
+    $post->post = $request->post;
+    $post->save();
+
+    return response()->json(['success' => true, 'post' => $post->post]);
+}
+    // 投稿の削除
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return redirect()->route('posts.index')->with('message', '投稿を削除しました');
+    }
 }

@@ -23,32 +23,45 @@
 
 <!-- 投稿一覧 -->
     <div class="post-list">
-        @foreach ($posts as $post)<!-- 投稿データを繰り返し処理で表示 -->
-            <div class="post-item">
-                <!-- 投稿者のアイコン（仮で固定画像） -->
+        @foreach ($posts as $post)
+            <div class="post-item" id="post-{{ $post->id }}">
                 <div class="user-icon">
                     <img src="{{ asset('images/icon1.png') }}" alt="投稿者アイコン">
                 </div>
-                <!-- 投稿内容と投稿日時 -->
                 <div class="post-content">
-                    <!-- 投稿者のアカウント名 -->
-                <h4 class="username">{{ $post->user->username }}</h4> <!-- 投稿者名 -->
-                    <p>{{ $post->post }}</p> <!-- 投稿内容 -->
-                    <small>{{ $post->created_at->format('Y-m-d H:i') }}</small> <!-- 投稿日時 -->
-                </div>
+                    <h4 class="username">{{ $post->user->username }}</h4>
+                    <p id="post-content-{{ $post->id }}">{{ $post->post }}</p>
+                    @if (Auth::id() === $post->user_id)
+                    <div class="post-actions">
+                        <button type="button" class="modal-button" data-post-id="{{ $post->id }}">
+                            <img src="{{ asset('images/edit.png') }}" alt="編集" width="20" height="20">
+                        </button>
+                        <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" onclick="return confirm('本当に削除しますか？')">
+                                <img src="{{ asset('images/trash.png') }}" alt="削除" width="20" height="20">
+                            </button>
+                        </form>
+                    </div>
+                @endif
+                <small>{{ $post->created_at->format('Y-m-d H:i') }}</small>
             </div>
-        @endforeach
-    </div>
+        </div>
+    @endforeach
+</div>
 
-<!-- フロントエンドでの文字数制限チェック -->
-<script>
-    const textarea = document.getElementById('content');
-    textarea.addEventListener('input', function () {
-        if (textarea.value.length > 150) {
-            alert('投稿内容は150文字以内で入力してください。');
-            textarea.value = textarea.value.substring(0, 150);
-        }
-    });
-</script>
+<div class="modal-block" style="display: none;">
+    <div class="modal-content" style="background: white; padding: 20px; border-radius: 10px; width: 300px; text-align: center;">
+        <p class="modal-text">モーダルウィンドウ表示</p>
+        <form id="edit-form">
+            <!-- 投稿内容は後で追加 -->
+        </form>
+    </div>
+</div>
+
+    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/modal.js') }}"></script>
+
 
 </x-login-layout>
