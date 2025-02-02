@@ -50,21 +50,21 @@ class PostsController extends Controller
     }
 
     // 投稿の編集
-    public function edit(Post $post)
+    public function update(Request $request, $id)
     {
-        return view('post.edit', compact('post'));
-    }
-    public function update(Request $request, Post $post)
-{
-    $post->post = $request->post;
-    $post->save();
+        // 投稿を取得(findOrFail($id) は 指定した ID の投稿を取得)
+        $post = Post::findOrFail($id);
+    // dd($post);
 
-    return response()->json(['success' => true, 'post' => $post->post]);
-}
+        // 投稿内容の更新
+        $post->update(['post' => $request->content]);
+
+        return redirect('/top')->with('success', '投稿を更新しました！');
+    }
     // 投稿の削除
-    public function destroy(Post $post)
+    public function delete($id)
     {
-        $post->delete();
-        return redirect()->route('posts.index')->with('message', '投稿を削除しました');
+        Post::where('id', $id)->delete();
+        return redirect('/top');
     }
 }

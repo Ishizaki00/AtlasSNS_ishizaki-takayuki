@@ -33,7 +33,7 @@
                     <p id="post-content-{{ $post->id }}">{{ $post->post }}</p>
                     @if (Auth::id() === $post->user_id)
                     <div class="post-actions">
-                        <button type="button" class="modal-button" data-post-id="{{ $post->id }}">
+                        <button type="button" class="modal-button" data-post="{{ $post->post }}" data-post-id="{{ $post->id }}">
                             <img src="{{ asset('images/edit.png') }}" alt="編集" width="20" height="20">
                         </button>
                         <form action="{{ route('posts.destroy', $post) }}" method="POST">
@@ -51,12 +51,17 @@
     @endforeach
 </div>
 
+<!-- モーダルウィンドウ中身 -->
 <div class="modal-block" style="display: none;">
     <div class="modal-content" style="background: white; padding: 20px; border-radius: 10px; width: 300px; text-align: center;">
-        <p class="modal-text">モーダルウィンドウ表示</p>
-        <form id="edit-form">
-            <!-- 投稿内容は後で追加 -->
-        </form>
+        <form id="edit-form" action="{{ route('posts.update', $post->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <textarea name="content" class="modal_post"></textarea>
+                <input type="hidden" name="id" class="modal_id" value="">
+                <input type="submit" value="更新">
+                {{ csrf_field() }}
+           </form>
     </div>
 </div>
 

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 // トップページ
 Route::get('/top', [PostsController::class, 'index'])->name('top');
 
-// プロフィール関連
+// middlewareの中にログイン後のでしか行けないRouteをまとめる
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -46,3 +46,4 @@ Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
 
 // 投稿の編集、削除
 Route::resource('posts', PostsController::class);
+Route::put('/posts/update/{id}', [PostsController::class, 'update'])->name('posts.update');
