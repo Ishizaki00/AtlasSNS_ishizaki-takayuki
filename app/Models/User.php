@@ -17,10 +17,13 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // username,email,password,icon-image,bioの更新の許可
     protected $fillable = [
         'username',
         'email',
         'password',
+        'icon-image',
+        'bio',
     ];
 
     /**

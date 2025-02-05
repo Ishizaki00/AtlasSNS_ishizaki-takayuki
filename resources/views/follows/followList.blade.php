@@ -1,6 +1,6 @@
 <x-login-layout>
   <div class="container">
-    Folow List
+    フォローリスト
 
     <!-- 自分がフォローしている人の投稿（フォロー機能できてから） -->
     <ul>

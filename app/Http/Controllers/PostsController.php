@@ -54,11 +54,10 @@ class PostsController extends Controller
     {
         // 投稿を取得(findOrFail($id) は 指定した ID の投稿を取得)
         $post = Post::findOrFail($id);
-    // dd($post);
+     // dd($post);
 
         // 投稿内容の更新
         $post->update(['post' => $request->content]);
-
         return redirect('/top')->with('success', '投稿を更新しました！');
     }
     // 投稿の削除
@@ -67,4 +66,5 @@ class PostsController extends Controller
         Post::where('id', $id)->delete();
         return redirect('/top');
     }
+    // ↑idはデータベースのカラム名、$id は、メソッドの引数として渡される値です。この値は、ルートパラメータ（{id}）から受け取った、削除したい投稿のIDを表す
 }

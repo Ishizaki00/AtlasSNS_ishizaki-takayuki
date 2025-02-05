@@ -36,10 +36,10 @@
                         <button type="button" class="modal-button" data-post="{{ $post->post }}" data-post-id="{{ $post->id }}">
                             <img src="{{ asset('images/edit.png') }}" alt="編集" width="20" height="20">
                         </button>
-                        <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                        <form action="{{ route('posts.delete', $post) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" onclick="return confirm('本当に削除しますか？')">
+                            <button type="submit" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
                                 <img src="{{ asset('images/trash.png') }}" alt="削除" width="20" height="20">
                             </button>
                         </form>
@@ -64,9 +64,6 @@
            </form>
     </div>
 </div>
-
-    <script src="{{ asset('js/script.js') }}"></script>
-    <script src="{{ asset('js/modal.js') }}"></script>
 
 
 </x-login-layout>

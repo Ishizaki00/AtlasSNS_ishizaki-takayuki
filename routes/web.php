@@ -5,45 +5,45 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\FollowsController;
-use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
-// トップページ
-Route::get('/top', [PostsController::class, 'index'])->name('top');
-
-// middlewareの中にログイン後のでしか行けないRouteをまとめる
+// 認証が必要なルート（ログインしていないと移動できないないページ）
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // トップページ
+    Route::get('/top', [PostsController::class, 'index'])->name('top');
+
+    // プロフィール関連
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    // プロフィールの表示（プロフィール編集画面）
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+
+    // プロフィール編集画面
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+
+    // プロフィール更新
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+    // 検索ページ
+    Route::get('/search', [UsersController::class, 'search'])->name('search');
+
+    // フォロー関連
+    Route::get('/follows', [FollowsController::class, 'followList'])->name('follows.list');
+    Route::get('/followers', [FollowsController::class, 'followerList'])->name('followers.list');
+    Route::post('/users/{user}/follow', [FollowsController::class, 'follow'])->name('users.follow');
+    Route::post('/users/{user}/unfollow', [FollowsController::class, 'unfollow'])->name('users.unfollow');
+
+    // 投稿関連
+    Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
+    Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
+    Route::resource('posts', PostsController::class);
+    //投稿編集
+    Route::put('/posts/update/{id}', [PostsController::class, 'update'])->name('posts.update');
+    Route::delete('/posts/update/{id}', [PostsController::class, 'delete'])->name('posts.delete');
 });
+
 
 // 認証関連
 require __DIR__ . '/auth.php';
 
-//フォローリストページルーティング
-Route::get('/follows', [FollowsController::class, 'followList'])->name('follows.list');
-//フォロワーリストページルーティング
-Route::get('/followers', [FollowsController::class, 'followerList'])->name('followers.list');
-//ユーザー検索ページルーティング
-Route::get('/search', [UsersController::class, 'search'])->name('search');
-
-
-// フォロー関連
-Route::post('/users/{user}/follow', [FollowsController::class, 'follow'])->name('users.follow');
-Route::post('/users/{user}/unfollow', [FollowsController::class, 'unfollow'])->name('users.unfollow');
-// Route::get('/follows', [FollowsController::class, 'list'])->name('follows.list');
-// Route::get('/followers', [FollowsController::class, 'listFollowers'])->name('followers.list');
-
-// 検索関連
-// Route::get('/search/users', [UsersController::class, 'index'])->name('search.users');
-
 // ログアウト
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
-
-// 投稿
-Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
-Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
-
-// 投稿の編集、削除
-Route::resource('posts', PostsController::class);
-Route::put('/posts/update/{id}', [PostsController::class, 'update'])->name('posts.update');

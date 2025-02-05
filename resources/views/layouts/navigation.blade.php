@@ -10,6 +10,12 @@
             <button class="accordion-title" data-accordion-title>
                 {{ Auth::user()->username }} さん
                 <img class="arrow-icon" src="{{ asset('/images/arrow.svg') }}" alt="Arrow">
+                <!-- アイコン画像を表示 -->
+                @if(Auth::user()->icon_image)
+                    <img src="{{ asset('storage/icons/' . Auth::user()->icon_image) }}" alt="ユーザーアイコン" class="user-icon">
+                @else
+                    <img src="{{ asset('/images/icon1.png') }}" alt="デフォルトアイコン" class="user-icon">
+                @endif
             </button>
             <ul class="menu" style="display: none;">
                 <li><a class="index" href="{{ route('top') }}">ホーム</a></li>
