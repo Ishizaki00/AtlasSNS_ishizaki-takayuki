@@ -43,14 +43,10 @@ class ProfileController extends Controller
 
         // アイコン画像のアップロード処理
         if ($request->hasFile('icon_image')) {
-            // 既存のアイコンを削除（必要なら）
-            if ($user->icon_image) {
-                Storage::delete('public/icons/' . $user->icon_image);
-            }
 
             // 新しいアイコンを保存
             $file = $request->file('icon_image');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $filename = 'icon_' . $user->id . '_' . time() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('public/icons', $filename);
 
             // ユーザーモデルにファイル名を保存

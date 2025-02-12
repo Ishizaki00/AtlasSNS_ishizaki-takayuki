@@ -4,7 +4,11 @@
     <div class="post-container">
      <!-- ログインユーザーのアイコン -->
      <div class="user-icon">
-        <img src="{{ asset('images/icon1.png') }}" alt="ユーザーアイコン">
+        @if(Auth::check() && Auth::user()->icon_image != 'icon1.png')
+            <img src="{{ asset('storage/icons/' . Auth::user()->icon_image) }}" alt="User Icon" class="user-icon">
+        @else
+            <img src="{{ asset('/images/icon1.png') }}" alt="デフォルトアイコン" class="user-icon">
+        @endif
     </div>
 
     <!-- 投稿フォーム -->
@@ -23,11 +27,17 @@
 
 <!-- 投稿一覧 -->
     <div class="post-list">
-        @foreach ($posts as $post)
-            <div class="post-item" id="post-{{ $post->id }}">
-                <div class="user-icon">
-                    <img src="{{ asset('images/icon1.png') }}" alt="投稿者アイコン">
-                </div>
+    @foreach ($posts as $post)
+        <div class="post-item" id="post-{{ $post->id }}">
+            <div class="user-icon">
+                <!-- ユーザーアイコン -->
+                @if($post->user->icon_image && $post->user->icon_image != 'icon1.png')
+                <img src="{{ asset('storage/icons/' . $post->user->icon_image) }}" alt="User Icon" class="user-icon">
+                @else
+                <img src="{{ asset('/images/icon1.png') }}" alt="デフォルトアイコン" class="user-icon">
+                @endif
+
+            </div>
                 <div class="post-content">
                     <h4 class="username">{{ $post->user->username }}</h4>
                     <p id="post-content-{{ $post->id }}">{{ $post->post }}</p>

@@ -21,10 +21,14 @@
               <!-- 「!」は「等しくない」という意味、下記は「ログインユーザーのIDと現在のユーザーのIDが等しくない場合」という条件を表す -->
             @foreach ($users as $user)
                 @if(Auth::id() != $user->id) {{-- ログインユーザーはリストに表示しない場合 --}}
-                <li>
-                    <div class="user-icon">
-                        <img src="{{ asset('images/icon1.png') }}" alt="投稿者アイコン">
-                    </div>
+        <li>
+            <div class="user-icon">
+                @if($user->icon_image) {{-- 各ユーザーのアイコンを参照 --}}
+                    <img src="{{ asset('storage/icons/' . $user->icon_image) }}" alt="{{ $user->username }}のアイコン" class="user-icon">
+                @else
+                    <img src="{{ asset('/images/icon1.png') }}" alt="デフォルトアイコン" class="user-icon">
+                @endif
+            </div>
                     <!-- ユーザーテーブル内のusernameを出力↓、phpのechoに相当 -->
                     {{ $user->username }}
 

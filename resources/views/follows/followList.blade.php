@@ -4,9 +4,17 @@
 
     <!-- 自分がフォローしている人の投稿（フォロー機能できてから） -->
     <ul>
-            @foreach ($followings as $following)
-                <li>{{ $following->username }}</li>
-            @endforeach
+    @foreach ($followings as $following)
+        <li>
+            @if ($following->icon_image)
+                <img src="{{ asset('storage/icons/' . $following->icon_image) }}" alt="{{ $following->username }}のアイコン">
+            @else
+                <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン">
+            @endif
+            {{ $following->username }}
+        </li>
+    @endforeach
+
         </ul>
 
         <div class="post-list">

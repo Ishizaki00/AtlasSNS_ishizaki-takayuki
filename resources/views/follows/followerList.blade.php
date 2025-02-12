@@ -5,11 +5,16 @@
         <h2>フォロワーリスト</h2>
 
         <!-- フォロワーアイコンを横並びで表示 -->
+        <!-- フォロワーアイコンを横並びで表示 -->
         <div class="follower-icons">
             @foreach ($followers as $follower)
                 <div class="follower-icon">
                     <!-- フォロワーのアイコン -->
-                    <img src="{{ asset('storage/icons/' . $follower->icon_image) }}" alt="{{ $follower->username }}のアイコン">
+                    @if($follower->icon_image && $follower->icon_image != 'icon1.png')
+                        <img src="{{ asset('storage/icons/' . $follower->icon_image) }}" alt="{{ $follower->username }}のアイコン">
+                    @else
+                        <img src="{{ asset('/images/icon1.png') }}" alt="デフォルトアイコン">
+                    @endif
                 </div>
             @endforeach
         </div>

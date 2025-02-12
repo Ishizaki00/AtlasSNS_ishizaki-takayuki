@@ -11,10 +11,10 @@
                 {{ Auth::user()->username }} さん
                 <img class="arrow-icon" src="{{ asset('/images/arrow.svg') }}" alt="Arrow">
                 <!-- アイコン画像を表示 -->
-                @if(Auth::user()->icon_image)
-                    <img src="{{ asset('storage/icons/' . Auth::user()->icon_image) }}" alt="ユーザーアイコン" class="user-icon">
+                @if(Auth::check() && Auth::user()->icon_image != 'icon1.png')
+                <img src="{{ asset('storage/icons/' . Auth::user()->icon_image) }}" alt="User Icon" class="user-icon">
                 @else
-                    <img src="{{ asset('/images/icon1.png') }}" alt="デフォルトアイコン" class="user-icon">
+                <img src="{{ asset('/images/icon1.png') }}" alt="デフォルトアイコン" class="user-icon">
                 @endif
             </button>
             <ul class="menu" style="display: none;">

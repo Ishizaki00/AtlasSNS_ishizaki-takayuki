@@ -2,11 +2,15 @@
     <div class="profile-edit-container">
         {!! Form::open(['route' => 'profile.update', 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
 
-        <!-- ユーザー名 -->
         <div class="form-group">
-            {{ Form::label('username', 'ユーザー名') }}
-            <img src="{{ asset('storage/icons/' . Auth::user()->icon_image) }}" alt="User Icon" class="user-icon">
-            {{ Form::text('username', Auth::user()->username, ['class' => 'form-control', 'required']) }}
+        <!-- ユーザーアイコン・ユーザー名 -->
+        @if(Auth::check() && Auth::user()->icon_image != 'icon1.png')
+        <img src="{{ asset('storage/icons/' . Auth::user()->icon_image) }}" alt="User Icon" class="user-icon">
+        @else
+        <img src="{{ asset('/images/icon1.png') }}" alt="デフォルトアイコン" class="user-icon">
+        @endif
+            {{ Form::label('ユーザー名') }}
+            {{ Form::input('text', 'username', Auth::user()->username, ['class' => 'form-control']) }}
         </div>
 
         <!-- メールアドレス -->

@@ -57,7 +57,9 @@ class FollowsController extends Controller
             $posts = $posts->merge($following->posts);
         }
 
+        //投稿を作成日時で並べ替え
         $posts = $posts->sortByDesc('created_at');
+
 
         return view('follows.followList', compact('posts', 'followings'));
     }
