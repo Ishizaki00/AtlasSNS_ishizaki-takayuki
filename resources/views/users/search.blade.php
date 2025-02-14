@@ -4,12 +4,17 @@
 
     <!-- 検索フォーム -->
     <div class="search-box">
-        <form action="" method="GET" class="search-form">
+        <form action="{{ route('users.search') }}" method="GET" class="search-form">
             <input type="text" name="query" class="search-input" placeholder="ユーザー名" value="{{ request('query') }}">
             <button type="submit" class="search-btn">
                 <img src="{{ asset('images/search.png') }}" alt="検索" class="search-icon">
             </button>
         </form>
+        <!-- 検索ワード -->
+         @if(request('query'))
+            <p>検索ワード：{{ request('query') }}</p>
+         @endif
+
     </div>
 
     <!-- ユーザーリスト -->

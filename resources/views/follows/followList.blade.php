@@ -7,11 +7,13 @@
     @foreach ($followings as $following)
         <li>
             @if ($following->icon_image)
-                <img src="{{ asset('storage/icons/' . $following->icon_image) }}" alt="{{ $following->username }}のアイコン">
+                <a href="{{ route('user.profile', $following->id) }}">
+                    <img src="{{ asset('storage/icons/' . $following->icon_image) }}" alt="{{ $following->username }}のアイコン">
+                </a>
             @else
                 <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン">
             @endif
-            {{ $following->username }}
+
         </li>
     @endforeach
 

@@ -5,7 +5,6 @@
         <h2>フォロワーリスト</h2>
 
         <!-- フォロワーアイコンを横並びで表示 -->
-        <!-- フォロワーアイコンを横並びで表示 -->
         <div class="follower-icons">
             @foreach ($followers as $follower)
                 <div class="follower-icon">

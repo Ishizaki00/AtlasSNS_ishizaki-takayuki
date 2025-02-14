@@ -25,6 +25,11 @@ Route::middleware('auth')->group(function () {
 
     // 検索ページ
     Route::get('/search', [UsersController::class, 'search'])->name('search');
+    Route::get('/users/search', [UsersController::class, 'search'])->name('users.search');
+
+    // 他ユーザーのプロフィール
+    Route::get('/user/{id}', [UsersController::class, 'show'])->name('user.profile');
+
 
     // フォロー関連
     Route::get('/follows', [FollowsController::class, 'followList'])->name('follows.list');
@@ -40,7 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/posts/update/{id}', [PostsController::class, 'update'])->name('posts.update');
     Route::delete('/posts/update/{id}', [PostsController::class, 'delete'])->name('posts.delete');
 });
-
 
 // 認証関連
 require __DIR__ . '/auth.php';
