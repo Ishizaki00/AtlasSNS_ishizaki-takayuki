@@ -27,7 +27,13 @@
                 @foreach ($posts as $post) {{-- ここで各投稿にアクセス --}}
                     <div class="post-item">
                         <div class="user-icon">
-                            <img src="{{ asset('images/icon1.png') }}" alt="投稿者アイコン">
+                            @if ($following->icon_image)
+                                    <a href="{{ route('user.profile', $following->id) }}">
+                                        <img src="{{ asset('storage/icons/' . $following->icon_image) }}" alt="{{ $following->username }}のアイコン">
+                                    </a>
+                                @else
+                                    <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン">
+                            @endif
                         </div>
                         <div class="post-content">
                             <h4 class="username">{{ $post->user->username }}</h4>

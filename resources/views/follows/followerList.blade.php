@@ -7,15 +7,18 @@
         <!-- フォロワーアイコンを横並びで表示 -->
         <div class="follower-icons">
             @foreach ($followers as $follower)
-                <div class="follower-icon">
-                    <!-- フォロワーのアイコン -->
-                    @if($follower->icon_image && $follower->icon_image != 'icon1.png')
+                <li>
+                @if ($follower->icon_image)
+                    <a href="{{ route('user.profile', $follower->id) }}">
                         <img src="{{ asset('storage/icons/' . $follower->icon_image) }}" alt="{{ $follower->username }}のアイコン">
-                    @else
-                        <img src="{{ asset('/images/icon1.png') }}" alt="デフォルトアイコン">
-                    @endif
-                </div>
-            @endforeach
+                    </a>
+                @else
+                <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン">
+            @endif
+
+        </li>
+    @endforeach
+
         </div>
 
         <!-- フォロワーごとの投稿内容を表示 -->
@@ -24,8 +27,14 @@
                 <div class="follower-post">
                     <div class="follower-info">
                         <!-- フォロワーのアイコン -->
-                        <img src="{{ asset('storage/icons/' . $follower->icon_image) }}" alt="{{ $follower->username }}のアイコン" class="follower-icon">
-                        <span class="follower-name">{{ $follower->username }}</span>
+                        @if ($follower->icon_image)
+                                <a href="{{ route('user.profile', $follower->id) }}">
+                                    <img src="{{ asset('storage/icons/' . $follower->icon_image) }}" alt="{{ $follower->username }}のアイコン">
+                                </a>
+                            @else
+                                <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン">
+                        @endif
+                            <span class="follower-name">{{ $follower->username }}</span>
                     </div>
 
                     <!-- フォロワーの投稿 -->

@@ -1,6 +1,5 @@
 <x-login-layout>
     <div class="container">
-        <h2>プロフィール</h2>
         <div class="profile-header">
             <!-- ユーザーアイコン -->
             @if ($user->icon_image)
@@ -8,17 +7,18 @@
             @else
                 <img src="{{ asset('/images/icon1.png') }}" alt="デフォルトアイコン" class="user-icon">
             @endif
-
+            <h1>ユーザー名</h1>
             <h3>{{ $user->username }}</h3>
+            <h2>自己紹介</h2>
             <p>{{ $user->bio ?? '自己紹介がありません。' }}</p>
 
             <!-- フォロー・フォロー解除ボタン -->
             @if (Auth::user()->isFollowing($user))
-                <form action="{{ route('users.unfollow', $user) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">フォロー解除</button>
-                </form>
+<form action="{{ route('users.unfollow', ['user' => $user->id]) }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="submit">フォロー解除</button>
+</form>
             @else
                 <form action="{{ route('users.follow', $user) }}" method="POST">
                     @csrf

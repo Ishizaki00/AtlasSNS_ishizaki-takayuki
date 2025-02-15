@@ -29,13 +29,16 @@ Route::middleware('auth')->group(function () {
 
     // 他ユーザーのプロフィール
     Route::get('/user/{id}', [UsersController::class, 'show'])->name('user.profile');
+    // Route::delete('/user/{id}', [FollowsController::class, 'unfollow'])->name('users.unfollow');
+    Route::post('/user/{id}/follow', [FollowsController::class, 'follow'])->name('users.follow');
+    // Route::delete('/user/{id}/unfollow', [FollowsController::class, 'unfollow'])->name('users.unfollow');
+    Route::delete('/user/{user}/unfollow', [FollowsController::class, 'unfollow'])->name('users.unfollow');
 
 
     // フォロー関連
     Route::get('/follows', [FollowsController::class, 'followList'])->name('follows.list');
     Route::get('/followers', [FollowsController::class, 'followerList'])->name('followers.list');
     Route::post('/users/{user}/follow', [FollowsController::class, 'follow'])->name('users.follow');
-    Route::post('/users/{user}/unfollow', [FollowsController::class, 'unfollow'])->name('users.unfollow');
 
     // 投稿関連
     Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');

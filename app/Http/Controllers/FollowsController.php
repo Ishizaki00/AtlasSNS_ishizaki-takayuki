@@ -51,7 +51,7 @@ class FollowsController extends Controller
     {
         $user = Auth::user();
         $followings = $user->followings;
-        $posts = collect(); // 空のコレクションで初期化
+        $posts = collect(); // 空のコレクションを作成し、フォローしているユーザーの投稿を結合する際にエラーが発生するのを防ぐために行われます。
 
         foreach ($followings as $following) {
             $posts = $posts->merge($following->posts);
