@@ -105,7 +105,7 @@ header p {
     /* 白文字 */
     text-decoration: none;
     /* 下線を消す */
-    font-size: 0.9rem;
+    font-size: 10px;
     /* フォントサイズ */
     display: inline-block;
     /* ボックス内に収める */
@@ -153,10 +153,11 @@ header p {
     width: 200px;
     height: 40px;
     padding: 10px;
-    font-size: 16px;
+    font-size: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    margin-bottom: 10px;
 }
 
 /* ログインボタン */
@@ -168,11 +169,12 @@ header p {
     /* ボタン内の要素を垂直方向に中央揃え */
     margin-top: 20px;
     /* 上の余白を調整 */
+
 }
 .login-font {
     text-align: center;
     /* 文字を水平方向に中央揃え */
-    font-size: 18px;
+    font-size: 20px;
     color: white;
     /* font-sizeは.login-buttonで設定済みなので削除 */
 }
@@ -183,6 +185,7 @@ header p {
 }
 
 .newuser a {
+    font-size: 12px;
     text-decoration: underline;
     /* 下線を引く */
     text-decoration-color: white;
