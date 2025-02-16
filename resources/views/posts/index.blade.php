@@ -49,15 +49,15 @@
                         <form action="{{ route('posts.delete', $post) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
+                            <button type="submit" class="delete-button" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
                                 <img src="{{ asset('images/trash.png') }}" alt="削除" width="20" height="20">
                             </button>
                         </form>
                     </div>
-                @endif
-                <small>{{ $post->created_at->format('Y-m-d H:i') }}</small>
+                    @endif
+                    <small>{{ $post->created_at->format('Y-m-d H:i') }}</small>
+                </div>
             </div>
-        </div>
     @endforeach
 </div>
 
@@ -69,7 +69,9 @@
                 @method('PUT')
                 <textarea name="content" class="modal_post"></textarea>
                 <input type="hidden" name="id" class="modal_id" value="">
-                <input type="submit" value="更新">
+                <button type="submit" style="border: none; background: none; cursor: pointer;">
+                    <img src="{{ asset('/images/edit.png') }}" alt="更新" style="width: 40px; height: auto;">
+                </button>
                 {{ csrf_field() }}
            </form>
     </div>

@@ -72,6 +72,7 @@ header {
 header p {
     font-size: 2em;
     /* テキストサイズ調整 */
+    font-weight: bold;
     color: #333;
     /* テキスト色 */
     margin: 0;
@@ -98,6 +99,20 @@ header p {
     /* テキストを中央揃え */
 }
 
+/* リンクのスタイル */
+.login-box a {
+    color: #fff;
+    /* 白文字 */
+    text-decoration: none;
+    /* 下線を消す */
+    font-size: 0.9rem;
+    /* フォントサイズ */
+    display: inline-block;
+    /* ボックス内に収める */
+    margin-top: 15px;
+    /* 上に余白 */
+}
+
 /* ログインボタンのスタイル */
 .login-box input[type="submit"] {
     width: 40%;
@@ -118,16 +133,62 @@ header p {
     /* カーソルを変更 */
 }
 
-/* リンクのスタイル */
-.login-box a {
-    color: #fff;
-    /* 白文字 */
-    text-decoration: none;
-    /* 下線を消す */
-    font-size: 0.9rem;
-    /* フォントサイズ */
-    display: inline-block;
-    /* ボックス内に収める */
-    margin-top: 15px;
-    /* 上に余白 */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* ログイン画面入力ボックス */
+.login-box {
+    display: flex;
+    /* Flexboxコンテナにする */
+    justify-content: flex-end;
+    /* 要素を右寄せにする */
+    background-color: rgba(0, 0, 10, 0.2)
+    /* 背景透明度 */
+}
+/* ログイン画面入力ボックス */
+.input {
+    width: 200px;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* ログインボタン */
+.login-button {
+    display: flex;
+    justify-content: flex-end;
+    /* ボタンを右端に寄せる */
+    align-items: center;
+    /* ボタン内の要素を垂直方向に中央揃え */
+    margin-top: 20px;
+    /* 上の余白を調整 */
+}
+.login-font {
+    text-align: center;
+    /* 文字を水平方向に中央揃え */
+    font-size: 18px;
+    color: white;
+    /* font-sizeは.login-buttonで設定済みなので削除 */
+}
+
+.newuser {
+    text-align: center;
+    /* テキストを中央揃え */
+}
+
+.newuser a {
+    text-decoration: underline;
+    /* 下線を引く */
+    text-decoration-color: white;
+    /* 下線の色 */
+    text-decoration-thickness: 1px;
+    /* 下線の太さ */
+    padding-bottom: 3px;
+    /* 下線と文字の間隔を狭める */
 }

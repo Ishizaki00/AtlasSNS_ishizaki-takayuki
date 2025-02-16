@@ -300,3 +300,25 @@ header{
     word-wrap: break-word;
     /* 長い単語を折り返し */
 }
+
+/* 投稿削除 */
+/* ボタンのスタイル */
+.delete-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* 通常時の画像 */
+.delete-button img {
+    width: 20px;
+    height: 20px;
+}
+
+/* ホバー時の画像 */
+.delete-button:hover img {
+    content: url('/images/trash-h.png');
+}
+
+/* 投稿編集モーダル */

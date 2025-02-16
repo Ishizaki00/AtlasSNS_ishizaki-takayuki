@@ -23,12 +23,39 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'username' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:users,email,' . Auth::id(),
-            'password' => 'nullable|string|min:8|confirmed',
-            'bio' => 'nullable|string',
-            'icon_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        // UserName: 入力必須, 2〜12文字
+        'username' => 'required|string|min:2|max:12',
+
+        // MailAddress: 入力必須, 5〜40文字, メール形式, 自分以外の重複不可
+        'email' => 'required|string|email|min:5|max:40|unique:users,email,' . Auth::id(),
+
+        // NewPassword: 入力必須, 8〜20文字, 英数字のみ
+        'password' => [
+            'required',
+            'string',
+            'min:8',
+            'max:20',
+            'regex:/^[a-zA-Z0-9]+$/', // 半角英数字のみ
+            'confirmed', // password_confirmation と一致するかチェック
+        ],
+
+        // NewPasswordConfirmation: 入力必須, 8〜20文字, 英数字のみ, Password と一致
+        'password_confirmation' => [
+            'required',
+            'string',
+            'min:8',
+            'max:20',
+            'regex:/^[a-zA-Z0-9]+$/', // 半角英数字のみ
+        ],
+
+        // Bio: 150文字以内
+        'bio' => 'nullable|string|max:150',
+
+        // IconImage: 画像のみ (jpg, png, bmp, gif, svg)
+        'icon_image' => 'nullable|image|mimes:jpg,png,bmp,gif,svg',
+
+        // 更新ボタンを押したらtopページに移動
+    ]);
 
         $user = Auth::user();
 
@@ -55,7 +82,7 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return redirect()->route('profile')->with('success', 'プロフィールを更新しました。');
+        return redirect()->route('top')->with('success', 'プロフィールを更新しました。');
     }
 
     // 追記
