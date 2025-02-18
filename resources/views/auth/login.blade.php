@@ -4,7 +4,7 @@
    <!-- loginというルート名 -->
   {!! Form::open(['url' => ('login')]) !!}
 
-  <p>AtlasSNSへようこそ</p>
+  <p class="login-title">AtlasSNSへようこそ</p>
 
   <div class="form-group">
     {{ Form::label('email') }}

@@ -4,6 +4,9 @@ html{
 body{
 }
 /* header */
+#head {
+    height: 80px;
+}
 header{
     background:#186AC9;
 }
@@ -109,6 +112,7 @@ header{
     transition: border-color 0.3s ease;
     /* フォーカス時のアニメーション */
 }
+
 
 /* テキストエリア専用のスタイル */
 .form-group textarea {

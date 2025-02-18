@@ -60,7 +60,7 @@ body{
 
 /* h1 内の画像スタイル */
 header h1 img {
-    max-width: 50%;
+    max-width: 60%;
 }
 /* ヘッダー部分 */
 header {
@@ -70,7 +70,7 @@ header {
 }
 /* サブテキスト (Social Network Service) のスタイル */
 header p {
-    font-size: 2em;
+    font-size: 2.5em;
     /* テキストサイズ調整 */
     font-weight: bold;
     color: #333;
@@ -83,7 +83,7 @@ header p {
 /* ログインフォームを囲むボックスのスタイル */
 .login-box {
     color: #fff;
-    width: 250px;
+    width: 300px;
     /* ボックスの幅 */
     padding: 20px;
     /* 内側の余白 */
@@ -97,6 +97,10 @@ header p {
     flex-direction: column;
     text-align: center;
     /* テキストを中央揃え */
+}
+
+.login-title{
+    font-size: 20px;
 }
 
 /* リンクのスタイル */
@@ -150,7 +154,7 @@ header p {
 }
 /* ログイン画面入力ボックス */
 .input {
-    width: 200px;
+    width: 250px;
     height: 40px;
     padding: 10px;
     font-size: 20px;
@@ -194,4 +198,54 @@ header p {
     /* 下線の太さ */
     padding-bottom: 3px;
     /* 下線と文字の間隔を狭める */
+}
+
+/* 新規ユーザー登録 */
+/* 新規登録フォーム全体の背景設定 */
+.register-container {
+    color: #fff;
+        width: 350px;
+        /* ボックスの幅 */
+        padding: 20px;
+        /* 内側の余白 */
+        background: rgba(128, 128, 128, 0.2);
+        /* 半透明の灰色背景 */
+        border-radius: 8px;
+        /* 角丸にする */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        /* 影を付ける */
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        /* テキストを中央揃え */
+    }
+
+.registration {
+    font-size: 20px;
+}
+
+
+
+/* 新規登録ボタン */
+.register-button {
+    width: 80%;
+    padding: 10px;
+    background-color: red;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-button:hover {
+    background-color: darkred;
+}
+
+/* リンクのスタイル */
+.register-container p a {
+    color: white;
+    text-decoration: underline;
 }
