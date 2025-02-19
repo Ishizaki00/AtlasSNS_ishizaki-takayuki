@@ -2,7 +2,7 @@
     <!-- トップページへのリンク -->
     <h1>
         <a href="{{ route('top') }}">
-            <img src="images/atlas.png" alt="Atlas" class="header-logo">
+            <img src="/images/atlas.png" alt="Atlas" class="header-logo">
         </a>
     </h1>
     <div class="side_user">

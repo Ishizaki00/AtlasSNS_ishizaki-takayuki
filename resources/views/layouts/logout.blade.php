@@ -25,7 +25,7 @@
     <body class=container>
         <header class="header-main">
             <h1 class="header-logo">
-                <img src="images/atlas.png" alt="Atlas">
+                <img src="/images/atlas.png" alt="Atlas">
             </h1>
             <p class="header-description">Social Network Service</p>
         </header>

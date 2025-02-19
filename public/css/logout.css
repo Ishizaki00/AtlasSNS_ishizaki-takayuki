@@ -83,7 +83,7 @@ header p {
 /* ログインフォームを囲むボックスのスタイル */
 .login-box {
     color: #fff;
-    width: 300px;
+    width: 350px;
     /* ボックスの幅 */
     padding: 20px;
     /* 内側の余白 */
@@ -131,7 +131,7 @@ header p {
     /* 枠線を消す */
     border-radius: 5px;
     /* 角丸にする */
-    font-size: 1rem;
+    font-size: 1.5rem;
     /* フォントサイズ */
     cursor: pointer;
     /* カーソルを変更 */
@@ -154,7 +154,7 @@ header p {
 }
 /* ログイン画面入力ボックス */
 .input {
-    width: 250px;
+    width: 300px;
     height: 40px;
     padding: 10px;
     font-size: 20px;
@@ -228,7 +228,8 @@ header p {
 
 /* 新規登録ボタン */
 .register-button {
-    width: 80%;
+    width: 40%;
+    margin-left: auto;
     padding: 10px;
     background-color: red;
     color: #fff;
