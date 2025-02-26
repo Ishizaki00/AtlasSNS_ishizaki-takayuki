@@ -7,7 +7,8 @@ body{
 #head {
     height: 80px;
 }
-header{
+.header{
+    margin-top: 2px;
     background:#186AC9;
 }
 
@@ -128,6 +129,30 @@ header{
     display: block;
 }
 
+/* サイドメニュー */
+.side-bar {
+    border-left: 1px solid #000;
+    font-size: 16px;
+    width: 300px;
+}
+
+.side-btn {
+    background-color: blue; /* 背景色を青に */
+    color: white; /* 文字色を白にする（見やすくするため） */
+    padding: 10px 20px; /* 余白を調整 */
+    border-radius: 5px; /* 角を少し丸く */
+    display: inline-block; /* リンクをボタンっぽく */
+    text-align: center; /* テキストを中央揃え */
+}
+
+.btn-link {
+    color: white;
+
+}
+
+.confirm {
+    padding-left: 20px;
+}
 /* 追記 プロフィール編集画面 */
 /* User Icon */
 .user-icon {

@@ -250,3 +250,48 @@ header p {
     color: white;
     text-decoration: underline;
 }
+
+/* 登録完了画面 */
+.rigister-comp {
+        color: #fff;
+        width: 350px;
+        /* ボックスの幅 */
+        padding: 20px;
+        /* 内側の余白 */
+        background-color: rgba(0, 0, 10, 0.2);
+        /* 半透明の灰色背景 */
+        border-radius: 8px;
+        /* 角丸にする */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        /* 影を付ける */
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        /* テキストを中央揃え */
+}
+
+.buck-btn a {
+    width: 180px;
+    padding: 10px;
+    margin: 0 80px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #FF0000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border-radius: 6px;
+    /* 角を丸く */
+}
+
+.rigister-title {
+    font-size: 20px;
+    font-weight: bold; /* 太字 */
+    line-height: 1; /* 行間を狭める */
+    margin-bottom: 30px;
+}
+
+.rigister-art {
+    line-height: 1;/* 行間を狭める */
+    margin-bottom: 30px;
+}
