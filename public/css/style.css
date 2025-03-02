@@ -5,12 +5,14 @@ body{
 }
 /* header */
 #head {
+
     height: 80px;
 }
-.header{
-    margin-top: 2px;
+header {
+    /* margin-top: 2px; */
     background:#186AC9;
 }
+
 
 .header-logo {
     width: 120px;
@@ -20,26 +22,11 @@ body{
     object-fit: contain;
     /* ロゴの縦横比を保持して表示 */
 }
-/* main content */
-#row{
-    display: flex;
-    flex-wrap: nowrap;
-    /* flex-flow: row wrap; */
-    /* justify-content: flex-end; */
-}
-#container{
-    flex: 0 0 80%;
-}
-#side-bar{
-    flex: 0 0 20%;
-    border-left: 1px solid #727272;
-    /* margin: 0 0 0 auto; */
-}
 /* アコーディオンメニュー全体のスタイル */
 .accordion-container {
     position: absolute;
     /* ページ内の任意の位置に配置可能 */
-    top: 20px;
+    top: 1px;
     right: 20px;
     /* 上端に固定 */
     lighting-color: 0;
@@ -132,17 +119,77 @@ body{
 /* サイドメニュー */
 .side-bar {
     border-left: 1px solid #000;
-    font-size: 16px;
-    width: 300px;
+    font-size: 14px;
+    width: 20%; /* 画面幅の20%を確保（可変幅にする） */
+    min-width: 180px; /* 最小幅を設定（小さくなりすぎないように） */
+    max-width: 300px; /* 最大幅を設定（広がりすぎないように） */
+    border-bottom:1px solid #000 ;
 }
 
+.side1 {
+    padding-left: 20px;
+}
+
+.side2 {
+    padding-left: 20px;
+
+}
+
+/* メインコンテンツのレイアウト調整 */
+#row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.user-count {
+    width: 100%;
+
+    /* padding: 10px 15px 20px 25px; */
+    /* 上 右 下 左（時計回り） */
+}
+/* メインコンテンツ */
+#container {
+    flex-grow: 1; /* 残りの幅をすべて占める */
+    width: 80%; /* 画面幅の80%（サイドバーを除く） */
+}
+
+.confirm {
+    /* padding-left: 20px; */
+    width: 100%;
+    padding-top: 20px;
+    border-bottom: 1px solid #000;
+}
+
+.side-font {
+    font-family: Arial;
+    font-size: 18px;
+
+
+}
+
+
 .side-btn {
-    background-color: blue; /* 背景色を青に */
+    background-color: #0066FF;
+    color: white;
+    width: 120px;
+    padding: 10px 1px;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    left: 130px;
+}
+
+.search-btn {
+        background-color: #0066FF; /* 背景色を青に */
     color: white; /* 文字色を白にする（見やすくするため） */
     padding: 10px 20px; /* 余白を調整 */
     border-radius: 5px; /* 角を少し丸く */
     display: inline-block; /* リンクをボタンっぽく */
     text-align: center; /* テキストを中央揃え */
+    position: relative;
+    left: 60px; /* 右に20px移動 */
+    margin-top: 20px;
 }
 
 .btn-link {
@@ -150,9 +197,6 @@ body{
 
 }
 
-.confirm {
-    padding-left: 20px;
-}
 /* 追記 プロフィール編集画面 */
 /* User Icon */
 .user-icon {
@@ -308,7 +352,7 @@ body{
 }
 
 .post-item {
-
+    width: 100%;
     border-bottom: 1px solid #727272;
 }
 
@@ -388,6 +432,7 @@ body{
     /* 内側余白 */
     margin-bottom: 10px;
     /* 下に余白 */
+    width: 100%;
 
 }
 
@@ -410,6 +455,22 @@ body{
     word-wrap: break-word;
     /* 長い単語を折り返し */
 }
+
+.post-list {
+    width: 100vw; /* 画面幅いっぱいに広げる */
+    max-width: 100%; /* 必要なら追加 */
+    margin: 0 auto; /* 中央寄せ（不要なら削除） */
+}
+.post-item {
+    width: 100%; /* 親要素（.post-list）の幅いっぱいにする */
+    border-bottom: 1px solid #727272;
+}
+.post-container {
+    max-width: 100%; /* 画面幅いっぱいに */
+    width: 100%;
+    margin: 0 auto;
+}
+
 
 /* 投稿削除 */
 /* ボタンのスタイル */

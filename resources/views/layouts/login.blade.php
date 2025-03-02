@@ -33,37 +33,26 @@
     <div id="container">
       {{ $slot }}
     </div>
-    <!-- <div id="side-bar">
-      <div id="confirm">
-        <p>〇〇さんの</p>
-        <div>
-          <p>フォロー数</p>
-          <p>〇〇名</p>
-        </div>
-        <p class="btn"><a href="">フォローリスト</a></p>
-        <div>
-          <p>フォロワー数</p>
-          <p>〇〇名</p>
-        </div>
-        <p class="btn"><a href="">フォロワーリスト</a></p>
-      </div>
-      <p class="btn"><a href="">ユーザー検索</a></p>
-    </div> -->
     <div class="side-bar">
+      <div class="user-count">
         <div class="confirm">
-          <p class="user-name">{{ Auth::user()->username }}さんの</p>
-        <div class="follow-info">
-          <p>フォロー数</p>
-          <p class="count">{{ Auth::user()->followings->count() }}名</p>
+          <div class="side1">
+              <p class="user-name">{{ Auth::user()->username }}さんの</p>
+                <div class="follow-info">
+                  <p class="side-font">フォロー数</p>
+                  <p class="side-font">{{ Auth::user()->followings->count() }}名</p>
+                </div>
+          </div>
+            <p class="side-btn"><a href="{{ url('/follows') }}" class="btn-link">フォローリスト</a></p>
+          <div class="follow-info">
+            <div class="side2">
+              <p class="side-font">フォロワー数</p>
+              <p class="side-font">{{ Auth::user()->followers->count() }}名</p>
+            </div>
+          </div>
+            <p class="side-btn"><a href="{{ url('/followers') }}" class="btn-link">フォロワーリスト</a></p>
         </div>
-        <p class="side-btn"><a href="{{ url('/follows') }}" class="btn-link">フォローリスト</a></p>
-        <div class="follow-info">
-          <p>フォロワー数</p>
-          <p class="count">{{ Auth::user()->followers->count() }}名</p>
-        </div>
-        <p class="side-btn"><a href="{{ url('/followers') }}" class="btn-link">フォロワーリスト</a></p>
-      </div>
-      <p class="side-btn"><a href="{{ url('/search') }}" class="btn-link">ユーザー検索</a></p>
+          <p class="search-btn"><a href="{{ url('/search') }}" class="btn-link">ユーザー検索</a></p>
     </div>
 
   </div>

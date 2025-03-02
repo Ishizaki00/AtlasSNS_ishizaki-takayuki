@@ -1,11 +1,11 @@
 <div id="head">
     <div class="header">
         <!-- トップページへのリンク -->
-        <h1>
+         <div>
             <a href="{{ route('top') }}">
                 <img src="/images/atlas.png" alt="Atlas" class="header-logo">
             </a>
-        </h1>
+        </div>
         <div class="side_user">
             <div id="accordion" class="accordion-container">
                 <button class="accordion-title" data-accordion-title>

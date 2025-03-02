@@ -50,6 +50,10 @@ body{
     /* 上からの高さ調整 */
     text-align: center;
     /* テキスト中央揃え */
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* 横幅を画面いっぱいに広げる */
 }
 
 /* テキストの色 */
