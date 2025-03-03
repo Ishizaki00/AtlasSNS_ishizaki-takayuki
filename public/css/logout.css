@@ -149,6 +149,8 @@ header p {
 
 /* ログイン画面入力ボックス */
 .login-box {
+    position: relative;
+    top: 300px; /* 20px 下に移動 */
     display: flex;
     /* Flexboxコンテナにする */
     justify-content: flex-end;

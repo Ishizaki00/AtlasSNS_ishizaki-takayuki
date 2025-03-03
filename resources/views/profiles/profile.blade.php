@@ -4,13 +4,17 @@
 
         <div class="form-group">
         <!-- ユーザーアイコン・ユーザー名 -->
-        @if(Auth::check() && Auth::user()->icon_image != 'icon1.png')
-        <img src="{{ asset('storage/icons/' . Auth::user()->icon_image) }}" alt="User Icon" class="user-icon">
-        @else
-        <img src="{{ asset('/images/icon1.png') }}" alt="デフォルトアイコン" class="user-icon">
-        @endif
-            {{ Form::label('ユーザー名') }}
-            {{ Form::input('text', 'username', Auth::user()->username, ['class' => 'form-control']) }}
+            <div class="user-info">
+                <div class="user-position">
+                    @if(Auth::check() && Auth::user()->icon_image != 'icon1.png')
+                        <img src="{{ asset('storage/icons/' . Auth::user()->icon_image) }}" alt="User Icon" class="user-icon">
+                    @else
+                        <img src="{{ asset('/images/icon1.png') }}" alt="デフォルトアイコン" class="user-icon">
+                    @endif
+                    {{ Form::label('ユーザー名') }}
+                </div>
+                    {{ Form::input('text', 'username', Auth::user()->username, ['class' => 'form-control']) }}
+            </div>
         </div>
 
         <!-- メールアドレス -->

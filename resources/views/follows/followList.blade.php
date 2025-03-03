@@ -3,21 +3,20 @@
     フォローリスト
 
     <!-- 自分がフォローしている人の投稿（フォロー機能できてから） -->
-    <ul>
-    @foreach ($followings as $following)
-        <li>
-            @if ($following->icon_image)
-                <a href="{{ route('user.profile', $following->id) }}">
-                    <img src="{{ asset('storage/icons/' . $following->icon_image) }}" alt="{{ $following->username }}のアイコン">
-                </a>
-            @else
-                <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン">
-            @endif
+    <ul class="following-icons">
+        @foreach ($followings as $following)
+            <li>
+                @if ($following->icon_image)
+                    <a href="{{ route('user.profile', $following->id) }}">
+                        <img src="{{ asset('storage/icons/' . $following->icon_image) }}" alt="{{ $following->username }}のアイコン">
+                    </a>
+                @else
+                    <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン">
+                @endif
+            </li>
+        @endforeach
 
-        </li>
-    @endforeach
-
-        </ul>
+    </ul>
 
         <div class="post-list">
             <!-- isEmpty() メソッドは、そのコレクションが空かどうかを判定します。 -->

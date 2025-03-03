@@ -123,7 +123,6 @@ header {
     width: 20%; /* 画面幅の20%を確保（可変幅にする） */
     min-width: 180px; /* 最小幅を設定（小さくなりすぎないように） */
     max-width: 300px; /* 最大幅を設定（広がりすぎないように） */
-    border-bottom:1px solid #000 ;
 }
 
 .side1 {
@@ -197,6 +196,7 @@ header {
 
 }
 
+
 /* 追記 プロフィール編集画面 */
 /* User Icon */
 .user-icon {
@@ -215,7 +215,6 @@ header {
     margin: 20px auto;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .profile-edit-container h1 {
@@ -223,7 +222,24 @@ header {
     margin-bottom: 20px;
 }
 
+.user-info {
+    display: flex; /* 横並びにする */
+    align-items: flex-start; /* 上揃えにする */
+}
+
+.user-position {
+    position: relative;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column; /* 縦方向に並べる */
+}
+
+
 .form-group {
+    position: relative; /* または absolute, fixed */
+    top: 50px; /* 上から10px下に移動 */
+    right:-200px;
+
     display: flex;
     /* 横並びに配置 */
     align-items: center;
@@ -283,6 +299,9 @@ header {
 }
 
 .form-control {
+    /* position: relative; /* または absolute, fixed */
+    /* top: 50px; 上から10px下に移動 */
+    /* right:-200px; */ */
     width: 120px;
     padding: 10px;
     font-size: 16px;
@@ -395,6 +414,8 @@ header {
 
 /* 投稿ボタン全体のスタイル */
 .post-button {
+    position: relative; /* または absolute, fixed */
+    right: -200px; /* 右から20px左に移動 */
     background: none;
     /* 背景をなしに設定 */
     border: none;
@@ -450,6 +471,7 @@ header {
 
 /* 投稿内容 */
 .post-content {
+        position: relative; /* 親要素を基準にする */
     flex: 1;
     /* 残りのスペースを占有 */
     word-wrap: break-word;
@@ -471,6 +493,26 @@ header {
     margin: 0 auto;
 }
 
+.post-date {
+    position: absolute; /* 親要素を基準に配置 */
+  top: 10px;
+  right: 10px;
+}
+
+.modal-button {
+  position: absolute; /* 親要素を基準に配置 */
+  top: 40px;
+  right: 40px;
+  border: none;
+  background-color: transparent;
+}
+
+.delete-button {
+  position: absolute; /* 親要素を基準に配置 */
+  top: 40px;
+  right: 0px;
+
+}
 
 /* 投稿削除 */
 /* ボタンのスタイル */
@@ -482,9 +524,14 @@ header {
 }
 
 /* 通常時の画像 */
+.modal-button img {
+    width: 50px;
+    height: 50px;
+}
+
 .delete-button img {
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
 }
 
 /* ホバー時の画像 */
@@ -493,3 +540,25 @@ header {
 }
 
 /* 投稿編集モーダル */
+
+/* フォローリスト */
+.following-icons {
+    border-bottom: 8px solid #ddd;
+}
+ul.following-icons { /* 親要素のulにクラスを追加 */
+  display: flex;
+  flex-wrap: wrap; /* 折り返しを有効にする */
+  list-style: none; /* リストのスタイルを削除 */
+  padding: 0; /* パディングを削除 */
+}
+
+ul.following-icons li {
+  margin-right: 10px; /* アイコン間のスペースを設定（任意） */
+  margin-bottom: 10px; /* アイコン間のスペースを設定（任意） */
+}
+
+ul.following-icons img {
+  width: 50px; /* アイコンのサイズを設定（任意） */
+  height: 50px; /* アイコンのサイズを設定（任意） */
+  object-fit: cover; /* 画像のフィット方法を設定（任意） */
+}

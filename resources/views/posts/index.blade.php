@@ -44,7 +44,7 @@
                     @if (Auth::id() === $post->user_id)
                     <div class="post-actions">
                         <button type="button" class="modal-button" data-post="{{ $post->post }}" data-post-id="{{ $post->id }}">
-                            <img src="{{ asset('images/edit.png') }}" alt="編集" width="20" height="20">
+                            <img src="{{ asset('images/edit.png') }}"  alt="編集" width="20" height="20">
                         </button>
                         <form action="{{ route('posts.delete', $post) }}" method="POST">
                             @csrf
@@ -55,7 +55,7 @@
                         </form>
                     </div>
                     @endif
-                    <small>{{ $post->created_at->format('Y-m-d H:i') }}</small>
+                    <small class="post-date">{{ $post->created_at->format('Y-m-d H:i') }}</small>
                 </div>
             </div>
     @endforeach
