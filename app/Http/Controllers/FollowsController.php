@@ -69,7 +69,17 @@ class FollowsController extends Controller
         $user = Auth::user();
         $followers = $user->followers;
 
-        return view('follows.followerList', compact('followers'));
+        $posts = collect(); // 空のコレクションを作成し、フォローしているユーザーの投稿を結合する際にエラーが発生するのを防ぐために行われます。
+
+        foreach ($followers as $follower) {
+            $posts = $posts->merge($follower->posts);
+        }
+
+        //投稿を作成日時で並べ替え
+        $posts = $posts->sortByDesc('created_at');
+
+
+        return view('follows.followerList', compact('posts', 'followers'));
 
     }
 

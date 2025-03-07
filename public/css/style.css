@@ -125,6 +125,14 @@ header {
     max-width: 300px; /* 最大幅を設定（広がりすぎないように） */
 }
 
+.following-header {
+    display: flex; /* 横並びにする */
+    align-items: center; /* 垂直方向に中央揃え */
+    margin-top: 20px;
+    border-bottom: 8px solid #ddd;
+
+}
+
 .side1 {
     padding-left: 20px;
 }
@@ -176,11 +184,11 @@ header {
     display: inline-block;
     text-align: center;
     position: relative;
-    left: 130px;
+    left: 120px;
 }
 
 .search-btn {
-        background-color: #0066FF; /* 背景色を青に */
+    background-color: #0066FF; /* 背景色を青に */
     color: white; /* 文字色を白にする（見やすくするため） */
     padding: 10px 20px; /* 余白を調整 */
     border-radius: 5px; /* 角を少し丸く */
@@ -542,9 +550,16 @@ header {
 /* 投稿編集モーダル */
 
 /* フォローリスト */
-.following-icons {
-    border-bottom: 8px solid #ddd;
+.f-list {
+    position: relative;
+    left: 20px;
+    margin-right: 50px;
+    margin-bottom: 30px;
+    font-size: 20px;
 }
+/* .following-icons {
+    border-bottom: 8px solid #ddd;
+} */
 ul.following-icons { /* 親要素のulにクラスを追加 */
   display: flex;
   flex-wrap: wrap; /* 折り返しを有効にする */
@@ -561,4 +576,119 @@ ul.following-icons img {
   width: 50px; /* アイコンのサイズを設定（任意） */
   height: 50px; /* アイコンのサイズを設定（任意） */
   object-fit: cover; /* 画像のフィット方法を設定（任意） */
+}
+
+.follower-icons {
+  display: flex;
+  flex-wrap: wrap; /* 折り返しを有効にする */
+  list-style: none; /* リストのスタイルを削除 */
+  padding: 0; /* パディングを削除 */
+
+}
+
+.follower-icons li {
+  margin-right: 10px; /* アイコン間のスペースを設定（任意） */
+  margin-bottom: 10px; /* アイコン間のスペースを設定（任意） */
+}
+
+.follower-icons img {
+  width: 50px; /* アイコンのサイズを設定（任意） */
+  height: 50px; /* アイコンのサイズを設定（任意） */
+  object-fit: cover; /* 画像のフィット方法を設定（任意） */
+}
+
+/* ユーザー検索ページ */
+.search-box {
+    display: flex;
+    margin-left: 50px;
+}
+.search-btn1 {
+    border: none;
+    background-color: transparent;
+}
+.user-search {
+ width: 50px; /* アイコンのサイズを設定（任意） */
+  height: 50px; /* アイコンのサイズを設定（任意） */
+
+}
+
+.search-header {
+    display: flex;
+    height: 150px;
+    align-items: center;
+    margin-top: 20px;
+    border-bottom: 8px solid #ddd;
+}
+
+.parent {
+    display: flex;
+  justify-content: center;
+}
+
+.user-item {
+    display: grid; /* gridレイアウトを使用 */
+    grid-template-columns: auto 1fr auto; /* アイコン、ユーザー名、ボタンの列を作成 */
+    align-items: center; /* 垂直方向に中央揃え */
+    gap: 10px; /* 要素間のスペースを設定（任意） */
+    margin-top: 20px;
+}
+
+.user-icon {
+    grid-column: 1; /* アイコンを1列目に配置 */
+}
+
+.username {
+    grid-column: 2; /* ユーザー名を2列目に配置 */
+    white-space: nowrap; /* ユーザー名が折り返さないようにする */
+    overflow: hidden; /* ユーザー名が長すぎる場合に隠す */
+    text-overflow: ellipsis; /* ユーザー名が長すぎる場合に省略記号を表示 */
+    margin-right: 150px;
+}
+
+.follow-button {
+    grid-column: 3; /* ボタンを3列目に配置 */
+    border-radius: 5px;
+}
+
+.follow-button .follow-button {
+    background-color: #66CCFF; /* フォローするボタンを青色に設定 */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.follow-button .unfollow-button {
+    background-color: #FF4500; /* フォロー解除ボタンを赤色に設定 */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* 検索ワード */
+.search-word {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+
+/* 他ユーザーのプロフィール */
+.otherprofiles-header {
+    height: 150px;
+    align-items: center;
+    margin-top: 20px;
+    border-bottom: 8px solid #ddd;
+
+}
+.other-profiles {
+    display: flex;
+
+}
+
+.self-introduction {
+    display: flex;
+
 }
