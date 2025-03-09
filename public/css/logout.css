@@ -1,10 +1,15 @@
 @charset "UTF-8";
 
-html{
-    height: 100%;
+html {
+    height: 120%;
+    margin: 0;
+    padding: 0;
 }
 
+
 body{
+    height: 100%;
+
     display: flex;
     flex-direction: column;/* 縦方向のレイアウト */
     align-items: center;/* 水平方向中央揃え */
@@ -50,7 +55,7 @@ body{
     /* 上からの高さ調整 */
     text-align: center;
     /* テキスト中央揃え */
-    position: fixed;
+    /* position: fixed; */
   top: 0;
   left: 0;
   width: 100%; /* 横幅を画面いっぱいに広げる */
@@ -150,7 +155,7 @@ header p {
 /* ログイン画面入力ボックス */
 .login-box {
     position: relative;
-    top: 300px; /* 20px 下に移動 */
+    /* top: 300px; 20px 下に移動 */
     display: flex;
     /* Flexboxコンテナにする */
     justify-content: flex-end;
@@ -221,7 +226,7 @@ header p {
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         /* 影を付ける */
         display: flex;
-        margin-top: 300px;
+        /* margin-top: 300px; */
         flex-direction: column;
         text-align: center;
         /* テキストを中央揃え */
@@ -272,7 +277,7 @@ header p {
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         /* 影を付ける */
         display: flex;
-        margin-top: 350px;
+        /* margin-top: 350px; */
         flex-direction: column;
         text-align: center;
         /* テキストを中央揃え */
