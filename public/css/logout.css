@@ -221,6 +221,7 @@ header p {
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         /* 影を付ける */
         display: flex;
+        margin-top: 300px;
         flex-direction: column;
         text-align: center;
         /* テキストを中央揃え */
@@ -271,6 +272,7 @@ header p {
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         /* 影を付ける */
         display: flex;
+        margin-top: 350px;
         flex-direction: column;
         text-align: center;
         /* テキストを中央揃え */

@@ -99,7 +99,7 @@ header {
 
 /* ホバー時のエフェクト */
 .menu li a:hover {
-    background-color: #f0f0f0;
+    background-color: #191970;
     /* 背景色を変更 */
 }
 
@@ -548,12 +548,55 @@ header {
 }
 
 /* 投稿編集モーダル */
+.modal-block {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
 
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 700px;
+    height: 350px;
+    max-width: 90%;
+    text-align: center;
+}
+
+.modal_post {
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.mdb {
+    text-align: center;
+    border: none;
+    background-color: transparent;
+
+}
+
+.editcomp-button {
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+}
 /* フォローリスト */
 .f-list {
     position: relative;
     left: 20px;
-    margin-right: 50px;
+    margin-right: 170px;
     margin-bottom: 30px;
     font-size: 20px;
 }
@@ -626,29 +669,25 @@ ul.following-icons img {
 }
 
 .user-item {
-    display: grid; /* gridレイアウトを使用 */
-    grid-template-columns: auto 1fr auto; /* アイコン、ユーザー名、ボタンの列を作成 */
-    align-items: center; /* 垂直方向に中央揃え */
-    gap: 10px; /* 要素間のスペースを設定（任意） */
-    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
 }
-
 .user-icon {
     grid-column: 1; /* アイコンを1列目に配置 */
 }
 
 .username {
-    grid-column: 2; /* ユーザー名を2列目に配置 */
-    white-space: nowrap; /* ユーザー名が折り返さないようにする */
-    overflow: hidden; /* ユーザー名が長すぎる場合に隠す */
-    text-overflow: ellipsis; /* ユーザー名が長すぎる場合に省略記号を表示 */
-    margin-right: 150px;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.follow-button {
+    margin-left: 20px; /* 必要に応じて調整 */
 }
 
-.follow-button {
-    grid-column: 3; /* ボタンを3列目に配置 */
-    border-radius: 5px;
-}
 
 .follow-button .follow-button {
     background-color: #66CCFF; /* フォローするボタンを青色に設定 */
@@ -656,22 +695,23 @@ ul.following-icons img {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    margin-left: 180px;
+    border-radius: 5px;
 }
 
 .follow-button .unfollow-button {
-    background-color: #FF4500; /* フォロー解除ボタンを赤色に設定 */
+    background-color: #FF4500;
     color: white;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 5px;
 }
-
 /* 検索ワード */
 .search-word {
     display: flex;
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 150px;
 }
 
 
@@ -683,12 +723,43 @@ ul.following-icons img {
     border-bottom: 8px solid #ddd;
 
 }
+
+.icon-margin {
+    margin-left: 50px;
+
+}
 .other-profiles {
     display: flex;
-
 }
 
 .self-introduction {
     display: flex;
+    margin-left: 50px;
+}
 
+.self-introduction p {
+    margin-top: 20px;
+}
+
+.another-follow-button {
+    margin-left: auto;
+    margin-right: 20px; /* 右端からの余白を20pxに設定 */
+}
+.another-follow-button .follow-button {
+    background-color: #66CCFF; /* フォローするボタンを青色に設定 */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 180px;
+    border-radius: 5px;
+}
+
+.another-follow-button .unfollow-button {
+    background-color: #FF4500;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
 }

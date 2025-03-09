@@ -1,5 +1,6 @@
 <x-login-layout>
         <div class="otherprofiles-header">
+            <div class="icon-margin">
             <div class="other-profiles">
                 <!-- ユーザーアイコン -->
                  <div>
@@ -17,7 +18,7 @@
                 <p>{{ $user->bio ?? '自己紹介がありません。' }}</p>
 
                     <!-- フォロー・フォロー解除ボタン -->
-                    <div class="follow-button">
+                    <div class="another-follow-button">
 
                         @if (Auth::user()->isFollowing($user))
                             <form action="{{ route('users.unfollow', ['user' => $user->id]) }}" method="POST">
@@ -34,10 +35,13 @@
                     </div>
             </div>
         </div>
+        </div>
 
         <div class="post-list">
+
             @foreach ($user->posts as $post)
                 <div class="post-item">
+                    <div class="icon-margin">
                     <div class="user-icon">
                     @if ($post->user->icon_image)
                         <a href="{{ route('user.profile', $post->user->id) }}">
@@ -46,6 +50,7 @@
                     @else
                         <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン">
                     @endif
+                </div>
                 </div>
                     <div class="post-content">
                     <h4 class="username">{{ $post->user->username }}</h4>

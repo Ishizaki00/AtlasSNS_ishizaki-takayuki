@@ -57,20 +57,20 @@
                     @endif
                     <small class="post-date">{{ $post->created_at->format('Y-m-d H:i') }}</small>
                 </div>
-            </div>
+        </div>
     @endforeach
-</div>
+    </div>
 
 <!-- モーダルウィンドウ中身 -->
 <div class="modal-block" style="display: none;">
-    <div class="modal-content" style="background: white; padding: 20px; border-radius: 10px; width: 300px; text-align: center;">
+    <div class="modal-content" >
         <form id="edit-form" action="{{ route('posts.update', $post->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <textarea name="content" class="modal_post"></textarea>
                 <input type="hidden" name="id" class="modal_id" value="">
-                <button type="submit" style="border: none; background: none; cursor: pointer;">
-                    <img src="{{ asset('/images/edit.png') }}" alt="更新" style="width: 40px; height: auto;">
+                <button type="submit" class="mdb">
+                    <img src="{{ asset('/images/edit.png') }}" alt="更新" class="editcomp-button">
                 </button>
                 {{ csrf_field() }}
            </form>
