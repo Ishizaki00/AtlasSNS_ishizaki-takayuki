@@ -1,5 +1,15 @@
 <x-login-layout>
     <div class="profile-edit-container">
+        @if ($errors->any())
+    <div class="error-messages">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
         {!! Form::open(['route' => 'profile.update', 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
 
         <div class="form-group">
@@ -7,7 +17,7 @@
             <div class="user-info">
                 <div class="user-position">
                     @if(Auth::check() && Auth::user()->icon_image != 'icon1.png')
-                        <img src="{{ asset('storage/icons/' . Auth::user()->icon_image) }}" alt="User Icon" class="user-icon">
+                        <img src="{{ asset('storage/icons/' . Auth::user()->icon_image) }}" alt="User Icon" class="user-icon22">
                     @else
                         <img src="{{ asset('/images/icon1.png') }}" alt="デフォルトアイコン" class="user-icon">
                     @endif

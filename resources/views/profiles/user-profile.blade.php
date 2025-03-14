@@ -15,7 +15,7 @@
             </div>
             <div class="self-introduction">
                 <h2 class="f-list">自己紹介</h2>
-                <p>{{ $user->bio ?? '自己紹介がありません。' }}</p>
+                <p class="rr">{{ $user->bio ?? '自己紹介がありません。' }}</p>
 
                     <!-- フォロー・フォロー解除ボタン -->
                     <div class="another-follow-button">

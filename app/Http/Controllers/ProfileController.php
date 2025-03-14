@@ -23,39 +23,54 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-        // UserName: 入力必須, 2〜12文字
-        'username' => 'required|string|min:2|max:12',
+    // UserName: 入力必須、2文字以上、12文字以内
+    'username' => 'required|string|min:2|max:12',
 
-        // MailAddress: 入力必須, 5〜40文字, メール形式, 自分以外の重複不可
-        'email' => 'required|string|email|min:5|max:40|unique:users,email,' . Auth::id(),
+    // MailAddress: 入力必須、5文字以上、40文字以内、登録済みメールアドレス使用不可（自分のメールアドレスは除く）、メールアドレスの形式
+    'email' => 'required|string|email|min:5|max:40|unique:users,email,' . Auth::id(),
 
-        // NewPassword: 入力必須, 8〜20文字, 英数字のみ
-        'password' => [
-            'required',
-            'string',
-            'min:8',
-            'max:20',
-            'regex:/^[a-zA-Z0-9]+$/', // 半角英数字のみ
-            'confirmed', // password_confirmation と一致するかチェック
-        ],
+    // NewPassword: 入力必須、英数字のみ、8文字以上、20文字以内
+    'password' => 'required|string|regex:/^[a-zA-Z0-9]+$/|min:8|max:20',
 
-        // NewPasswordConfirmation: 入力必須, 8〜20文字, 英数字のみ, Password と一致
-        'password_confirmation' => [
-            'required',
-            'string',
-            'min:8',
-            'max:20',
-            'regex:/^[a-zA-Z0-9]+$/', // 半角英数字のみ
-        ],
+    // NewPasswordConfirmation: 入力必須、英数字のみ、8文字以上、20文字以内、Passwordと一致
+    'password_confirmation' => 'required|string|regex:/^[a-zA-Z0-9]+$/|min:8|max:20|same:password',
 
-        // Bio: 150文字以内
-        'bio' => 'nullable|string|max:150',
+    // Bio: 150文字以内
+    'bio' => 'nullable|string|max:150',
 
-        // IconImage: 画像のみ (jpg, png, bmp, gif, svg)
-        'icon_image' => 'nullable|image|mimes:jpg,png,bmp,gif,svg',
+    // IconImage: 画像（jpg、png、bmp、gif、svg）のみ
+    'icon_image' => 'nullable|image|mimes:jpg,png,bmp,gif,svg',
+], [
+    'username.required' => 'ユーザー名は必須です。',
+    'username.string' => 'ユーザー名は文字列で入力してください。',
+    'username.min' => 'ユーザー名は2文字以上で入力してください。',
+    'username.max' => 'ユーザー名は12文字以内で入力してください。',
 
-        // 更新ボタンを押したらtopページに移動
-    ]);
+    'email.required' => 'メールアドレスは必須です。',
+    'email.string' => 'メールアドレスは文字列で入力してください。',
+    'email.email' => '有効なメールアドレスを入力してください。',
+    'email.min' => 'メールアドレスは5文字以上で入力してください。',
+    'email.max' => 'メールアドレスは40文字以内で入力してください。',
+    'email.unique' => 'このメールアドレスはすでに登録されています。',
+
+    'password.required' => 'パスワードは必須です。',
+    'password.string' => 'パスワードは文字列で入力してください。',
+    'password.regex' => 'パスワードは英数字のみ使用できます。',
+    'password.min' => 'パスワードは8文字以上で入力してください。',
+    'password.max' => 'パスワードは20文字以内で入力してください。',
+
+    'password_confirmation.required' => '確認用パスワードは必須です。',
+    'password_confirmation.string' => '確認用パスワードは文字列で入力してください。',
+    'password_confirmation.regex' => '確認用パスワードは英数字のみ使用できます。',
+    'password_confirmation.min' => '確認用パスワードは8文字以上で入力してください。',
+    'password_confirmation.max' => '確認用パスワードは20文字以内で入力してください。',
+    'password_confirmation.same' => '確認用パスワードが一致しません。',
+
+    'bio.max' => '自己紹介は150文字以内で入力してください。',
+    'icon_image.image' => 'アイコン画像は画像ファイルでなければなりません。',
+    'icon_image.mimes' => 'アイコン画像はjpg, png, bmp, gif, svg形式の画像ファイルでなければなりません。',
+]);
+
 
         $user = Auth::user();
 

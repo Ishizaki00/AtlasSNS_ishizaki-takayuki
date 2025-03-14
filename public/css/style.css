@@ -62,6 +62,7 @@ header {
     width: 100%;
 }
 
+
 /* 矢印アイコンのサイズを調整 */
 .arrow-icon {
     width: 14px;
@@ -83,25 +84,32 @@ header {
 }
 
 .menu li {
-    padding: 8px 10px;
-    border-top: 1px solid #ddd;
-    /* 各項目の区切り線 */
+    background-color: transparent;
+    transition: background-color 0.3s ease;
 }
 
-.menu li a {
+.menu li:hover {
+    background-color: #ddd; /* ホバー時の背景色を指定 */
+}
+
+.menu li a, .menu li form button {
     text-decoration: none;
-    /* 下線を消去 */
     color: #aaa;
-    /* テキスト色 */
     display: block;
     width: 100%;
+    padding: 10px; /* クリック範囲を広げる */
+    text-align: left;
+    transition: color 0.3s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font: inherit;
 }
 
-/* ホバー時のエフェクト */
-.menu li a:hover {
-    background-color: #191970;
-    /* 背景色を変更 */
+.menu li:hover a, .menu li:hover form button {
+    color: #fff; /* ホバー時のテキスト色 */
 }
+
 
 /* 追記 アコーディオンメニュー*/
 /* 追記 */
@@ -203,8 +211,29 @@ header {
     color: white;
 
 }
+.error-messages {
+    position: absolute; /* 絶対位置指定 */
+    top: 10px; /* 上からの位置 */
+    left: 50%; /* 中央配置 */
+    transform: translateX(-50%); /* 中央寄せ */
+    background-color: rgba(255, 0, 0, 0.9); /* 赤色の半透明背景 */
+    color: #fff; /* 白文字 */
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-align: center;
+    z-index: 9999; /* 最前面に表示 */
+    white-space: nowrap; /* メッセージが折り返されないようにする */
+}
+.error-messages ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
 
+/* 追記 プロフィール編集画面 */
+/* User Icon */
 /* 追記 プロフィール編集画面 */
 /* User Icon */
 .user-icon {
@@ -216,6 +245,16 @@ header {
     /* テキストとの間隔 */
     vertical-align: middle;
     /* テキストと揃える */
+}
+
+.user-icon22 {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* 丸型にする */
+    margin-right: 10px;
+    /* テキストとの間隔 */
+    vertical-align: middle;
 }
 
 .profile-edit-container {
@@ -231,17 +270,17 @@ header {
 }
 
 .user-info {
+    margin-left: -50px;
     display: flex; /* 横並びにする */
-    align-items: flex-start; /* 上揃えにする */
+    align-items: center; /* 垂直方向中央揃え */
 }
 
 .user-position {
-    position: relative;
-    bottom: 30px;
-    display: flex;
-    flex-direction: column; /* 縦方向に並べる */
+    display: flex; /* 横方向に並べる */
+    align-items: center; /* 垂直方向中央揃え */
 }
 
+/* ... 他のCSSは変更なし ... */
 
 .form-group {
     position: relative; /* または absolute, fixed */
@@ -479,11 +518,18 @@ header {
 
 /* 投稿内容 */
 .post-content {
-        position: relative; /* 親要素を基準にする */
+    position: relative; /* 親要素を基準にする */
     flex: 1;
     /* 残りのスペースを占有 */
     word-wrap: break-word;
     /* 長い単語を折り返し */
+     min-height: 80px;
+}
+
+.post-content p {
+    width: 85%;
+    word-wrap: break-word;
+    white-space: pre-wrap; /* 改行を保持する */
 }
 
 .post-list {
@@ -738,7 +784,12 @@ ul.following-icons img {
 }
 
 .self-introduction p {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-left: 30px;
+    font-family: inherit;
+    font-size: 24px;
+    font-weight: 500;
+    color: inherit;
 }
 
 .another-follow-button {

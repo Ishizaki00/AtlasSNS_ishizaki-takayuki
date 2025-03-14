@@ -2,6 +2,17 @@
 
 <div class="post">
     <div class="post-container">
+        <!-- エラーメッセージ -->
+       @if ($errors->any())
+    <div class="error-messages">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
      <!-- ログインユーザーのアイコン -->
      <div class="user-icon">
         @if(Auth::check() && Auth::user()->icon_image != 'icon1.png')
@@ -15,7 +26,7 @@
     <form action="{{ route('posts.store') }}" method="POST" class="post-form">
         @csrf
         <!-- 投稿内容入力エリア -->
-        <textarea name="content" id="content" maxlength="150" placeholder="投稿内容を入力してください。" required></textarea>
+        <textarea name="content" id="content" placeholder="投稿内容を入力してください。"></textarea>
 
         <!-- 投稿ボタン -->
         <button type="submit" class="post-button">
@@ -40,7 +51,7 @@
             </div>
                 <div class="post-content">
                     <h4 class="username">{{ $post->user->username }}</h4>
-                    <p id="post-content-{{ $post->id }}">{{ $post->post }}</p>
+                    <p id="post-content-{{ $post->id }}">{!! nl2br(e($post->post)) !!}</p>
                     @if (Auth::id() === $post->user_id)
                     <div class="post-actions">
                         <button type="button" class="modal-button" data-post="{{ $post->post }}" data-post-id="{{ $post->id }}">

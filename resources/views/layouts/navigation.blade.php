@@ -24,7 +24,7 @@
                     <li>
                     <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                         @csrf
-                        <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer; font: inherit;">
+                        <button type="submit">
                         ログアウト
                         </button>
                     </form>

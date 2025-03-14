@@ -25,14 +25,14 @@
             @else -->
                 @foreach ($posts as $post) {{-- ここで各投稿にアクセス --}}
                     <div class="post-item">
-                        <div class="user-icon">
-                            @if ($following->icon_image)
-                                    <a href="{{ route('user.profile', $following->id) }}">
-                                        <img src="{{ asset('storage/icons/' . $following->icon_image) }}" alt="{{ $following->username }}のアイコン">
-                                    </a>
-                                @else
-                                    <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン">
-                            @endif
+                            <div class="user-icon">
+                        @if ($post->user->icon_image)
+                            <a href="{{ route('user.profile', $post->user->id) }}">
+                                <img src="{{ asset('storage/icons/' . $post->user->icon_image) }}" alt="{{ $post->user->username }}のアイコン">
+                            </a>
+                        @else
+                            <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン">
+                        @endif
                         </div>
                         <div class="post-content">
 

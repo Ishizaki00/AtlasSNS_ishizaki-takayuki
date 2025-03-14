@@ -13,8 +13,19 @@ class PostsController extends Controller
     public function index()
     {
         // 「desc」は降順に並べる、「asc」 だと昇順
-        $posts = Post::orderBy('created_at', 'desc')->get();
-        return view('posts.index', compact('posts'));
+        // ログインユーザーのIDを取得
+    $userId = Auth::id();
+
+    // ログインユーザーがフォローしているユーザーのIDを取得
+    $followingIds = Auth::user()->followings()->pluck('users.id');
+
+    // フォローしているユーザー + 自分の投稿を取得
+    $posts = Post::whereIn('user_id', $followingIds) // フォローしているユーザーの投稿
+                 ->orWhere('user_id', $userId) // 自分の投稿
+                 ->orderBy('created_at', 'desc') // 作成日時の降順に並べる
+                 ->get();
+
+    return view('posts.index', compact('posts'));
     }
 
     public function user()
@@ -34,8 +45,12 @@ class PostsController extends Controller
     {
         // バリデーション
         $request->validate([
-            'content' => 'required|max:150',
-        ]);
+        'content' => 'required|string|max:150',
+    ], [
+        'content.required' => '投稿内容を入力してください。',
+        'content.string' => '投稿内容は文字列で入力してください。',
+        'content.max' => '投稿内容は150文字以内で入力してください。',
+    ]);
 
         $id = Auth::id(); //ログインユーザーIDを取得
 
@@ -52,6 +67,15 @@ class PostsController extends Controller
     // 投稿の編集
     public function update(Request $request, $id)
     {
+        // バリデーション
+        $request->validate([
+        'content' => 'required|string|max:150',
+    ], [
+        'content.required' => '投稿内容を入力してください。',
+        'content.string' => '投稿内容は文字列で入力してください。',
+        'content.max' => '投稿内容は150文字以内で入力してください。',
+    ]);
+
         // 投稿を取得(findOrFail($id) は 指定した ID の投稿を取得)
         $post = Post::findOrFail($id);
      // dd($post);
