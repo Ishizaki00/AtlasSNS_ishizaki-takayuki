@@ -75,7 +75,8 @@
 <!-- モーダルウィンドウ中身 -->
 <div class="modal-block" style="display: none;">
     <div class="modal-content" >
-        <form id="edit-form" action="{{ route('posts.update', $post->id) }}" method="POST">
+        <form id="edit-form" action="" method="POST">
+
                 @csrf
                 @method('PUT')
                 <textarea name="content" class="modal_post"></textarea>

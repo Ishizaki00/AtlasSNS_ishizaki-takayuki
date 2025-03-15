@@ -43,9 +43,9 @@ Route::middleware('auth')->group(function () {
     // 投稿関連
     Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
     Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
-    Route::resource('posts', PostsController::class);
+    Route::resource('posts', PostsController::class)->except(['create', 'edit']);
     //投稿編集
-    Route::put('/posts/update/{id}', [PostsController::class, 'update'])->name('posts.update');
+Route::put('/posts/{post}', [PostsController::class, 'update'])->name('posts.update');
     Route::delete('/posts/update/{id}', [PostsController::class, 'delete'])->name('posts.delete');
 });
 
