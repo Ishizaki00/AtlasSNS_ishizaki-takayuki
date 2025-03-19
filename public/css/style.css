@@ -89,7 +89,7 @@ header {
 }
 
 .menu li:hover {
-    background-color: #ddd; /* ホバー時の背景色を指定 */
+    background-color: #000080; /* ホバー時の背景色を指定 */
 }
 
 .menu li a, .menu li form button {
@@ -641,8 +641,10 @@ header {
 /* フォローリスト */
 .f-list {
     position: relative;
+    width: 300px; /* 要素の横幅を300pxに指定 */
+    text-align: left;
     left: 20px;
-    margin-right: 170px;
+    /* margin-right: 170px; */
     margin-bottom: 30px;
     font-size: 20px;
 }
@@ -785,7 +787,6 @@ ul.following-icons img {
 
 .self-introduction p {
     margin-top: 10px;
-    margin-left: 30px;
     font-family: inherit;
     font-size: 24px;
     font-weight: 500;

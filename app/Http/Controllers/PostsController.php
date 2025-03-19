@@ -65,29 +65,34 @@ class PostsController extends Controller
     }
 
     // 投稿の編集
-    public function update(Request $request, $id)
+    public function update(Request $request, $post)
 {
     $request->validate([
         'content' => 'required|string|max:150',
-    ], [
+        ], [
         'content.required' => '投稿内容を入力してください。',
         'content.string' => '投稿内容は文字列で入力してください。',
         'content.max' => '投稿内容は150文字以内で入力してください。',
     ]);
 
-    $post = Post::findOrFail($id); // IDに該当する投稿を取得
-
-    // 投稿内容を更新
+    $post = Post::findOrFail($post); // `$post` は ID を受け取る
     $post->update(['post' => $request->content]);
 
     return redirect()->route('posts.index')->with('success', '投稿を更新しました！');
 }
 
+
     // 投稿の削除
-    public function delete($id)
-    {
-        Post::where('id', $id)->delete();
-        return redirect()->route('top');
+public function destroy($id)
+{
+    $post = Post::findOrFail($id);
+
+    // 投稿がログインユーザーのものであれば削除
+    if (Auth::id() === $post->user_id) {
+        $post->delete();
     }
+
+    return back()->with('success', '投稿を削除しました。');
+}
     // ↑idはデータベースのカラム名、$id は、メソッドの引数として渡される値です。この値は、ルートパラメータ（{id}）から受け取った、削除したい投稿のIDを表す
 }

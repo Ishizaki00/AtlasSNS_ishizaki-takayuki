@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('posts', PostsController::class)->except(['create', 'edit']);
     //投稿編集
 Route::put('/posts/{post}', [PostsController::class, 'update'])->name('posts.update');
-    Route::delete('/posts/update/{id}', [PostsController::class, 'delete'])->name('posts.delete');
+Route::delete('/posts/{id}', [PostsController::class, 'destroy'])->name('posts.destroy');
 });
 
 // 認証関連

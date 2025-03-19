@@ -57,13 +57,14 @@
                         <button type="button" class="modal-button" data-post="{{ $post->post }}" data-post-id="{{ $post->id }}">
                             <img src="{{ asset('images/edit.png') }}"  alt="編集" width="20" height="20">
                         </button>
-                        <form action="{{ route('posts.delete', $post) }}" method="POST">
+                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="delete-button" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
                                 <img src="{{ asset('images/trash.png') }}" alt="削除" width="20" height="20">
                             </button>
                         </form>
+
                     </div>
                     @endif
                     <small class="post-date">{{ $post->created_at->format('Y-m-d H:i') }}</small>
@@ -75,7 +76,7 @@
 <!-- モーダルウィンドウ中身 -->
 <div class="modal-block" style="display: none;">
     <div class="modal-content" >
-        <form id="edit-form" action="" method="POST">
+        <!-- <form id="edit-form" action="" method="POST">
 
                 @csrf
                 @method('PUT')
@@ -85,7 +86,17 @@
                     <img src="{{ asset('/images/edit.png') }}" alt="更新" class="editcomp-button">
                 </button>
                 {{ csrf_field() }}
-           </form>
+           </form> -->
+           <form id="edit-form" action="" method="POST">
+                @csrf
+                @method('PUT')
+                    <textarea name="content" class="modal_post"></textarea>
+                    <input type="hidden" name="id" class="modal_id" value="">
+                <button type="submit" class="mdb">
+                    <img src="{{ asset('/images/edit.png') }}" alt="更新" class="editcomp-button">
+                </button>
+            </form>
+
     </div>
 </div>
 

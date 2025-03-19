@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 html {
-    height: 120%;
+    /* height: 120%; */
     margin: 0;
     padding: 0;
 }
@@ -13,7 +13,8 @@ body{
     display: flex;
     flex-direction: column;/* 縦方向のレイアウト */
     align-items: center;/* 水平方向中央揃え */
-    height: 100%;/* background: #186AC9; */
+    /* height: 100%;background: #186AC9; */
+    min-height: 100vh;
     background-image: linear-gradient(
             180deg,
             rgba(1, 129, 253, 1),
