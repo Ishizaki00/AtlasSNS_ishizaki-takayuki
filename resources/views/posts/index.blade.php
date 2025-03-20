@@ -26,7 +26,7 @@
     <form action="{{ route('posts.store') }}" method="POST" class="post-form">
         @csrf
         <!-- 投稿内容入力エリア -->
-        <textarea name="content" id="content" placeholder="投稿内容を入力してください。"></textarea>
+        <textarea name="post" id="post" placeholder="投稿内容を入力してください。"></textarea>
 
         <!-- 投稿ボタン -->
         <button type="submit" class="post-button">
@@ -90,7 +90,7 @@
            <form id="edit-form" action="" method="POST">
                 @csrf
                 @method('PUT')
-                    <textarea name="content" class="modal_post"></textarea>
+                    <textarea name="post" class="modal_post"></textarea>
                     <input type="hidden" name="id" class="modal_id" value="">
                 <button type="submit" class="mdb">
                     <img src="{{ asset('/images/edit.png') }}" alt="更新" class="editcomp-button">

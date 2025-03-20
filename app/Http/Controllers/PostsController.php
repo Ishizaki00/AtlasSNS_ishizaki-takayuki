@@ -42,41 +42,41 @@ class PostsController extends Controller
 
     // 投稿保存処理
     public function store(Request $request)
-    {
-        // バリデーション
-        $request->validate([
-        'content' => 'required|string|max:150',
+{
+    // バリデーション
+    $request->validate([
+        'post' => 'required|string|max:150', // ✅ 'post' に統一
     ], [
-        'content.required' => '投稿内容を入力してください。',
-        'content.string' => '投稿内容は文字列で入力してください。',
-        'content.max' => '投稿内容は150文字以内で入力してください。',
+        'post.required' => '投稿内容を入力してください。',
+        'post.string' => '投稿内容は文字列で入力してください。',
+        'post.max' => '投稿内容は150文字以内で入力してください。',
     ]);
 
-        $id = Auth::id(); //ログインユーザーIDを取得
+    $id = Auth::id(); // ログインユーザーIDを取得
 
-        // 投稿データをデータベースに保存
-        Post::create([
-            'content' => $request->input('content'), // 修正１投稿内容
-            'user_id' => $id, //27行目$idを持ってくる
-        ]);
+    // 投稿データをデータベースに保存
+    Post::create([
+        'post' => $request->input('post'), // ✅ 'post' に保存
+        'user_id' => $id,
+    ]);
 
-        // 投稿一覧ページへリダイレクト
-        return redirect()->route('posts.index');
-    }
+    return redirect()->route('posts.index');
+}
+
 
     // 投稿の編集
-    public function update(Request $request, $post)
+public function update(Request $request, $post)
 {
     $request->validate([
-        'content' => 'required|string|max:150',
-        ], [
-        'content.required' => '投稿内容を入力してください。',
-        'content.string' => '投稿内容は文字列で入力してください。',
-        'content.max' => '投稿内容は150文字以内で入力してください。',
+        'post' => 'required|string|max:150', // ✅ 'post' に統一
+    ], [
+        'post.required' => '投稿内容を入力してください。',
+        'post.string' => '投稿内容は文字列で入力してください。',
+        'post.max' => '投稿内容は150文字以内で入力してください。',
     ]);
 
-    $post = Post::findOrFail($post); // `$post` は ID を受け取る
-    $post->update(['post' => $request->content]);
+    $post = Post::findOrFail($post);
+    $post->update(['post' => $request->post]); // ✅ 'post' を更新
 
     return redirect()->route('posts.index')->with('success', '投稿を更新しました！');
 }
